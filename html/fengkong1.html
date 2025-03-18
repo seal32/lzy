@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>封控日记</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>封控日记-1</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2022-07-10</font></p>
+<p>2022.7.8，上午准备出小区去运动，发现小区门口附近停了很多警车、医护车，很多警察、医护人员、志愿者进入小区，门口拉起了警戒线，所有住小区的人员只能进不能出。
+<center><a href="/images/fk01.jpg"><img src="/images/fk01.jpg"></a></center></p>
+<p>据说是小区有人感染了新冠，要封闭管理。只好围着小区道路转了两圈，在小区公用运动器械区做了一些器械运动。不一会，有人过来通知所有人员要回家呆着，不能出楼栋大门。小区群有人发了个流调图，说是A5栋有夫妻2人连同其他区的3人一起自驾游，去过广西、茂名等地，5日回广州后走过不少地方，7日核酸检测阳性。
+<center><a href="/images/fk02.jpg"><img src="/images/fk02.jpg"></a></center></p>
+<p>中午来了很多大巴，将A5栋的人全部运到隔离酒店。下午大白上门核酸采样，晚上查看结果为阴性。</p>
+<p>7.9，早上打开木门，发现铁门被贴上封条。业主群里吵翻了，大家都认为不通知住户就贴封条的做法简单粗暴，起码贴的时候要告知住户，且讲清楚住户外购的食品、生活用品要怎么送进来。小区管家说他们也不知道，要请示上级才能确定。到中午时分，群里通知说是外购的食品用品可以送到小区大门口，然后由志愿者送到各家各户门口，由住户开门拿。大门的封条改为电子门禁，住房里面的人出去时间长了会发出报警声并通知有关人员，这算是彻底被监禁在家了。
+<center><a href="/images/fk03.jpg"><img src="/images/fk03.jpg"></a></center></p>
+<p>下午又来了很多大巴，将A1栋的人运去隔离酒店。手机网购了几天的肉菜，价钱和平时差不多，就是等送上来的时间比较长。可以理解，那么多爆发性的购物，志愿者大热天穿着防护服，逐家逐户送菜上门，真不容易。下午3点38分大白上门核酸采样，晚上0点48分结果出来为阴性。</p>
+<p>7.10，天气晴朗，酷热。习惯了每天出外运动，一下子被封闭在家，心情有点郁闷。真不知道武汉、上海那些被封了几个月的人是怎么熬过来的。摆弄一下阳台的花草，心情稍好。
+<center><a href="/images/fk04.jpg"><img src="/images/fk04.jpg"></a></center></p>
+<p><center><a href="/images/fk05.jpg"><img src="/images/fk05.jpg"></a></center></p>
+<p>站在阳台往楼下看，小区静悄悄的，楼底下竖着一块木板，写着“高风险区，请勿靠近”。我们这几栋楼没有阳性人员也被划入高风险区了，希望之后几天检测没发现阳性，否则要被拉去酒店隔离就麻烦啦。
+<center><a href="/images/fk06.jpg"><img src="/images/fk06.jpg"></a></center></p>
+<p><center><a href="/images/fk07.jpg"><img src="/images/fk07.jpg"></a></center></p>
+<p>楼上两个月前从澳大利亚回来处理他爸后事的小何，回国后在酒店总共隔离了25天，本来已经买了今天回澳大利亚的机票，谁知碰到这事，走不了，好不容易买的机票只能退了。不过能多陪他独居在家的妈妈几天，他妈觉得很高兴……。</p>
+<p>不知道还要封几天，想想再多买一点东西比较保险。“百果园”除了卖水果还卖肉、菜，稍贵一点但质量比较靠谱。下单后很快就送到小区门口，志愿者帮忙拿上来，真是辛苦他们了。
+<center><a href="/images/fk08.jpg"><img src="/images/fk08.jpg"></a></center></p>
+<p><center><a href="/images/fk09.jpg"><img src="/images/fk09.jpg"></a></center></p>
+<p>小区微信群有人提议买一点水果、矿泉水给志愿者，以表心意，大家都赞成。有一住户说不用麻烦大家微信凑钱，他自己已经网购送过来了。互相理解，互相帮助，同心协力，相信很快会战胜疫情……。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

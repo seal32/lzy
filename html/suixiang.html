@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>随想</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>随想</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2022-4-28</font></p>
+<p>今日，楼上邻居何叔的儿子终于回到广州，这时距他老爸住院已经过去了两个多月。他老爸过世也有一个多月了，如今静静的躺在殡仪馆冰冷的柜子里，再也不可能睁开眼睛见他儿子一面了。</p>
+<p>两个多月前，何叔发现大便有血丝，到医院看病，医生叫他最好住院检查。过完年，何叔一个人背着简单的行李住进医院，经检查说是可能得了直肠癌需要微创手术。何叔老婆问这样年纪的老人动手术行不行？医生说何叔的身体机能比三十多岁的年轻人还好，完全没问题。不幸的是，手术两天后突发并发症入ICU抢救，开始医生说何叔大概还可以活几天，后来又说有好转的迹象，要用呼吸机，打电话与何叔远在澳大利亚的儿子联系，作为亲属总是不放过一线希望的，他儿子只能答应。使用呼吸机第一天10万起步，以后大概每天一万，还不算别的费用。其实，那时的何叔已经和死人差不多，完全没有救活的希望，医生也清楚。医院早就变成营利性机构，都有营业指标，既然家属同意，巴不得你继续用钱。可惜，一个月后，医院最终宣告何叔死亡。</p>
+<p>何叔老婆以前患中风后遗症，要坐轮椅，行动不便，平时都是何叔买菜煮饭照顾她的，何叔住院后，请了一个护工照顾她，月薪4800元。何叔死后，他儿子吩咐亲朋好友不要告诉他妈，等他回来再说。可怜的是，直到今天她还以为何叔活着住在医院里治疗，总是叮嘱护工买菜什么的要省点钱，要留钱交医药费……。</p>
+<p>何叔儿子当初听到他爸住院后，本想赶回来，可是他已经入籍澳大利亚，原来的中国护照已经过期，好不容易申请了签证，疫情期间又很难买到机票，一拖就是一个多月。买到悉尼飞厦门的机票，在厦门隔离了21天，同机有一个人感染了新冠，又要多隔离3天，今天总算回到广州，不容易。</p>
+<p>鉴于很多类似的情况，最近女儿不断催促我提交资料给她，说是帮我们申请澳大利亚绿卡，我不以为然。我的熟人圈都在这里，去人生地不熟的异国他乡寄人篱下，没什么意思。况且，拿个破绿卡一个人要20万人民币，两个人40万，拿着40万我可以自由自在的环游中国了。人老了真有事谁也靠不住，最可靠的是人民币，40万起码可以请护工照顾7年，7年以后谁知道会发生什么事？谁知道还有没有7年呢。</p>
+<p>人生不可能有永远的陪伴，归程中最后一段陪伴你的，往往是医院冰冷的病床……。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

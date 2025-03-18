@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>封控日记6</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>封控日记-6</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2022-07-16</font></p>
+<p>7.15 阴转雷阵雨，最高温度34°C，湿热，偏南风1级，封控第8天。</p>
+<p>今天有一部分被送到酒店隔离的人员陆续送回小区，估计可能还要居家隔离几天。↓（以下图片来自业主群，如认为侵权请通知删除）</p>
+<p><center><a href="/images/fk22.jpg"><img src="/images/fk22.jpg"></a></center></p>
+<p>按照新冠肺炎防控方案第九版规定：</p>
+<blockquote>
+<p>高风险区实行“足不出户、上门服务”，连续7天无新增感染者降为中风险区，中风险区连续3天无新增感染者降为低风险区。其他地区对近7天内有高风险区旅居史人员，采取7天集中隔离医学观察措施。中风险区实行“足不出区、错峰取物”，连续7天无新增感染者降为低风险区。其他地区对近7天内有中风险区旅居史人员，采取7天居家医学观察措施。低风险区指中、高风险区所在县（市、区、旗）的其他地区，实行“个人防护、避免聚集”。其他地区对近7天内有低风险区旅居史人员，要求3天内完成2次核酸检测。</p>
+</blockquote>
+<p>看来，如无意外，小区快解封了。风浪终将过去，再坚持一会，前面就是宁静的港湾。<br><br></p>
+<p>7.16 多云，34°,炎热，SW～S风1级。封控第9天。上午11点，顺意花园A5-A9调整为中风险区，人员可以出房门坐电梯到大堂取物，不能出楼栋的大门。
+<center><a href="/images/fk23.jpg"><img src="/images/fk23.jpg"></a></center></p>
+<p>小区其它楼栋调整为低风险区，可以解封出小区，很多人站阳台大声欢呼并放电子鞭炮庆祝。↓</p>
+<p><center><video width="100%" height="100%" controls="controls">
+  <source src="/video/jiefeng1.mp4" type="video/mp4" /></center></p>
+<p>海珠区防控办通知：↓</p>
+<blockquote>
+<p>7月16日起海珠区南石头街道风险区域等级调整通告</p>
+<p>　　根据疫情处置进展，按照国务院应对新型冠状病毒肺炎疫情联防联控机制综合组《新型冠状病毒肺炎疫情防控方案(第九版)》，对南石头街道相关区域调整如下：</p>
+<p>　　一、自2022年7月16日11时起，将富力顺意花园小区A5、A6、A7、A8、A9栋由高风险区调整为中风险区;将富力顺意花园小区(A5-A9栋除外)调整为低风险区。</p>
+<p>　　二、自2022年7月16日23时起，将翠城花园小区、翡翠轩花园小区调整为低风险区。</p>
+<p>　　调整后的中风险区实行“人不出区、错峰取物”管理，区域内连续3天无新增感染者降为低风险区;低风险区实行“个人防护、避免聚集”管理，区域内人员离开广州市持48小时核酸检测阴性证明。</p>
+<p>　　以上区域范围和管控要求将根据疫情防控形势变化适时调整，区域内居民如遇到生活、就医、心理和法律等困难，可拨打24小时暖心服务热线：顺意花园18127824571(医疗服务)，34011369(生活保障)。</p>
+<p>　　特此通告。</p>
+<p>　　广州市海珠区新型冠状病毒肺炎疫情防控指挥部办公室</p>
+<p>2022年7月16日</p>
+</blockquote>
+<p>按规定，高风险区降为中风险区后，3天内核酸检测全部人员为阴性的，则改为低风险区，可以解封出小区。这样算来，到19日上午11点，我们就可以解封啦！</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

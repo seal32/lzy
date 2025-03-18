@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>航海</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2><center>航    海</center></h2>
+<img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2008-09-05</font>
+<p><h3><div style="font-weight:500">&emsp;&emsp;随着国人生活水平的提高，以前认为遥不可及的小汽车现在已经走进中国普通老百姓的家庭。今后，人们又会追求什么样的新鲜玩意？是私人游艇！大家可能从电视上也看到，很多外国港口密密麻麻地停满了漂亮的小游艇，有条件的西方人都喜欢买一艘游艇，一家大小或三五知己驾船出海，领略迷人的海上风光，感受航海的乐趣，真是逍遥自在，其乐无穷！在我国珠海等城市，已经建起了多个游艇制造厂，也许在不久的将来，很多先富起来的中国人就会拥有游艇，实现盼望已久的航海梦想。 <br>
+&emsp;&emsp;也许你会说，就算我准备买游艇，要学会开船也不容易啊。当然，如果你要成为职业的高级船员，除了要接受几年的航海院校专业教育外，还要具备一定的船上工作资历，考取相应的船员适任证书。以甲类证书（无限航区3000总吨以上）三副为例，首先应完成认可的航海类院校船舶驾驶专业中专及以上的学历教育，还应完成：基本安全、艇筏操纵、高级消防、精通急救、雷达观测、ARPA、GMDSS等专业培训，再参加理论考试和评估：考试：航海学、船舶值班与避碰、航海气象与海洋学、航海英语、海上货物运输、船舶管理、船舶结构与设备。评估：海图作业、航线设计、船舶定位、仪器使用、测罗经差、货物积载与系固、航海英语听力与会话。考试及评估合格后，要完成不少于18个月的船上培训，才能取得海事局签发的适任证书。以后要升任大副、船长还要经过两次考试，你说烦吗？不过，考小游艇证书比这容易得多了，具体规定可向海事部门了解。<br>
+&emsp;&emsp;海上航行，首先要有海图及其它航海图书资料，国内航行常用的有：中国海区航行海图，港口图；航路指南；潮夕表；沿海港口信号规定图；电台表；航标表等等，可根据《航海图书目录》及航行目的地选择，在各地海图供应站购买。还有要备足燃料、淡水、主付食品、备件、药品等，特别是要检查救生、消防、堵漏设备。总之，要准备充分才能出海。通常，我首先想到的是要准备酒，否则抓到海鲜的时候就悔之晚矣！<br>
+&emsp;&emsp;科技的发展，使航海变得越来越简单，随着美国的全球卫星定位系统（GPS)的开放民用，即使没有经过航海专业培训的人，也可以很轻松地学会航海，只要你花点时间学习怎样使用仪器和了解《国际海上避碰规则》。一般常用的航海仪器有：1、雷达。这是航海者的眼睛，利用它测定目标的方位、距离，确定本船的位置，发现、判断来船的动态，新型的ARPA雷达可以自动跟踪几十个活动目标，显示目标的航向、航速、到达最近会遇点的时间，距离等数据，就算是大雾弥漫的天气或伸手不见五指的夜晚，借助它也可保证船舶的航行安全。2、GPS。通过接收卫星信号，全天候实时测定本船位置、速度，只要你输入航路点数据，可以引导你正确地沿着计划航线航行，到达世界任何地方。在中国沿海，已经建成了精度更高的差分GPS台链（DGPS),利用DGPS接收机接收经过距离误差校正的GPS信号，可以将位置精度提高到三米以内。3、电罗经。用于指示船舶航向，向其它导航仪器输出航向数据。4、测深仪。测量船底水深。5、计程仪。计算、输出航速、航程数据。6、气象仪。测量风向，风速、温度等气象要素。7、气象传真机。接收岸台发布的各种气象传真图。8、NAVTEX。用于接收航行警告、气象报告。9、VHF。甚高频无线电话，用于近距离通话。10、卫星电台，中、短波无线电台，窄带直接印字电报终端。用于远距离通信。11、DSC。数字选呼，用于遇险呼叫和接收等。12、雷达应答器。遇险时，便于他船用雷达搜索到。13卫星示位标。用于遇险时发出位置信号。还有很多......。 <br>
+&emsp;&emsp;说了那么多，心动了吧？心动不如行动！暂时没有船？不要紧，可以先租条小船到那些比较近的沿海小岛去玩，在广东的大亚湾澳头港、桂山岛等地方都有小船租，费用不贵。带上爱人或女朋友，在远离尘世，风景秀丽的海岛沙滩上游水、钓鱼，真乃人生一大享受！</div></h3></p>
+<center><img src="/images/sea14.jpg" /></center><br>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

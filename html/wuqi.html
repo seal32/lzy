@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>wuqi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>船上的武器</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2022-05-22</font></p>
+<p>听某医学砖家说，每天敲敲键盘活动一下手指，能有效预防老人痴呆症，姑且信之，今天就打几个字，聊聊关于船上武器的事。</p>
+<p>很多朋友问起，现在船上有没有配备武器弹药？据我了解，目前我国除了海警局的船外，基本上绝大多数船舶都没有配备武器的。配与不配武器，以前也有争论，但因为配备武器牵扯到很多问题，权衡利弊，最后不了了之。</p>
+<p>可能你会说，现在海盗那么猖獗，船上没有武器会不会更危险？确实，海上也不太平，1998年9月，“长胜轮”在台湾海峡南部海域被海盗劫持，船上23名中国船员被杀害并沉尸海底，马六甲海峡、索马里海域海盗劫船事件更是层出不穷。船员能做的就是加强值班，及早发现接近的海盗船，利用高压水龙、啤酒瓶、求救信号弹等有限手段，尽力阻止海盗登船。不过，遇到持有RPG火箭筒的海盗，建议还是乖乖投降吧，否则小命难保。</p>
+<p>2000年前，我国的海船很多都配有武器。我是1990年当船长的，那时我们船专门设有一个武器弹药库，配有：4挺轻机枪、4支冲锋枪、8支56式半自动步枪、1支手枪、2箱手榴弹、2万多发子弹，这样的火力对付一般的海盗绰绰有余。弹药库钥匙、手枪由政委保管，弹药库的另一把钥匙由大副保管，两把钥匙一起使用才能打开库门。船上组织成立了一个“民兵连”（其实只有40多人，远不够一个连），一般由船长兼任连长，政委兼任指导员。</p>
+<p>停航时，“民兵连”要进行军事训练。我最感兴趣的是每年一次的实弹射击训练，靶场就在如今的广州大学城一座小山脚下，当时是海军的一个靶场。每人10发子弹，很多当过兵的船员射击成绩都不错，总成绩起码打个50环以上，我视力差，勉强能打个几十环。记得有一次剩下很多冲锋枪子弹，我装满一个弹夹（30发），扣动扳机连射，如狂风扫落叶，那感觉简直爽死了！可惜中靶的子弹没几个。谁也想不到，每年打靶成绩最好的，是一个有轻度神经病的水手，他次次弹无虚发，每发8环以上，据说他在部队时就是个神枪手，所以说，别以为我们什么都比神经病强。最难的是手枪射击，25米距离，我打了10发子弹，竟然没有一发中靶，尴尬极了。打靶回来，大家背着枪在船舶抛锚附近的仑头村招摇过市，然后在街边找个大排档喝酒，枪支横七竖八的放在旁边的空桌上，那情景有点像解放前的土匪<code>^_^</code>。</p>
+<p>每半年，我们要把全部枪支拿出来擦拭、抹油保养。有一次，一个船员拿着手枪，开玩笑对着另一个船员做出射击动作，之后拆开弹夹发现里面还卡着一颗子弹，好在当时没打开保险，差点发生人命事故。</p>
+<p>有一次，我们船在一个海湾抛锚。当晚月黑风高，北风呼啸，冷雨纷飞，浪涛汹涌。半夜时分，值班驾驶员在雷达屏幕上发现两只小艇正悄无声息的向我船接近。为防不测，大家按平时的应变部署，严阵以待。当两只小艇靠近时，我们打开探照灯，发现小艇上约有二十多人，神情诡异。那些人看到我们，马上对我们喊话，说他们迷航了，又冷又饿，请求我们允许他们上船过夜。我们当然拒绝，同时派两个水手拿着冲锋枪警戒，叫大厨提2罐淡水、1袋馒头，用绳子吊下海面给他们，告诉他们按我船探照灯指示的方向开就可以回到岸上。看到我们有枪，这些人只好开船离开，消失在茫茫夜海中。稍后，我们马上起锚，驶离这个海湾。</p>
+<p>某年，我们单位一艘船在南海西沙浪花礁搁浅触礁，没多久，周围聚集了几十艘不知哪国的渔船，围着搁浅船团团转，看似在等待机会上船洗劫一番，形势很紧张。好在当时船上配有武器，船员们拿出机枪，在船头、船尾、驾驶台架起来，严阵以待。那些渔船一看这阵势，一哄而散。所以，有枪在手，还是有用的。</p>
+<p>有一年，我们单位的一艘船停靠在粤东某港口，几个船员晚上出去喝酒，回来时发现码头的铁门关了，好说歹说请求值班的保安开门，保安死活不肯开门。几个船员借着酒气，爬上铁门翻过去，保安来阻止，双方发生争吵打斗，船员把保安打翻在地。所谓强龙难斗地头蛇，这个保安是港务局长的亲戚，即时叫当地公安来抓走了几个船员，后来把船长也叫过去关了，还打了几拳。船上政委一听船长被打了，火冒三丈，马上叫船员们集合，拿出弹药库的武器，想去派出所要人。好在有冷静的船员一看势头不对，极力劝止，否则后果难以预料。此事最后通过双方单位的领导沟通，赔了医药费了事。此时，有枪在手不一定是好事。</p>
+<p>后来，随着社会治安越来越差，这么多武器放在船上是一个隐患，如果被不法分子偷走，后果不堪设想，船长们干脆要求将船上的武器上交了。况且现在的海盗武器越来越先进，什么火箭筒、肩扛式导弹等应有尽有，说不定霉帝运给乌克兰打俄罗斯的什么毒刺导弹、反坦克火箭弹也会落入海盗手中，海盗原来使用的破小艇也换成了大的高速快艇，船上这些轻武器对他们根本就是以卵击石……。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

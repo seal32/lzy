@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>住院杂记</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2><center>住院杂记 </center></h2>
+<img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2018-12-26</font>
+<h3><div style="font-weight:600"><font face="仿宋" color="CadetBlue" >&emsp;&emsp;2018年12月15日 昨天晚饭后散步，走到燕翔路和南泰路交界路口，突然觉得前胸很闷、疼痛，全身发热冒汗，头晕，走不动，马上打车回家，吃了一粒救心丹，没缓解，又再含服硝酸甘油2次，没见效。以为慢慢就会好，坚持不肯去医院，在难受中熬过了一夜。今天整天躺床上，病情丝毫不见好转。实在熬不住，18：00老婆叫楼上好友开车送到珠江医院急诊中心，医生即时做心电图检查，初步判断是心肌梗死，马上送心血管内科监护室检查、急救，一会即送手术室做“左旋支PTCA（经皮冠脉内血管成形术）及I支架置入术”。抽出心脏冠状动脉内的血栓并在血管狭窄处放置了一个支架。手术一个小时左右，比较顺利。做完手术后送回监护室监护。<br>
+&emsp;&emsp;医生诊断是：急性非ST段抬高型侧壁心肌梗死。起因是：在心脏冠状动脉狭窄的基础上，由于不稳定的冠状动脉粥样硬化斑块破裂，斑块的破裂会导致血小板急剧聚集，形成血栓，从而导致血管管腔急性闭塞，引起急性心肌梗死。医生说，急性心肌梗塞致死率极高，像我这样熬了一天才到医院还能救活的极少，算是好运捡回一条命。<br>
+&emsp;&emsp;12月16-17日， 在监护室，吊针、吃药、监测，吃喝拉撒都在床上，一点做人的尊严都没有。除了1100-1130半小时内，其它时间家属只能送饭到门口不能进来。这都不算什么，最难受的是监护室很多重症病人，整天惨叫，大小便失禁，连空气中都弥漫着死亡的气息，晚上根本就睡不着，非常难受。有一个病人A ，78岁了，也是患心肌梗死，在我之前做完手术，脾气非常暴躁，晚上总是要护士熄灭监护室的所有灯光，对护工呼呼喝喝，吵得监护室不得安宁。<br>
+&emsp;&emsp;12月18日，经要求并得到医生同意，移出监护室，住进普通三人病房最里面的床位。（再不出监护室恐怕小病都搞出大病来！），该三人病房靠门口的病床还住着一个痴呆病人B，口中念念有词，不断的对着病房地板、墙壁吐口水，恶心极了，向护士提出要换房，护士说没床位了，这个人马上就出院，不得已只能忍着。稍后中间病床来了一个病人C，手臂骨折、糖尿病、心绞痛，准备做心脏血管造影等手术。下午，B的女儿来接她出院，大声骂她，看起来老人挺可怜的。B走后，来了一个病人住她原来的床位，一看原来是在监护室转出的病人A，真是巧，怕什么来什么。A 有两个女儿都要上班，服侍他的是他老婆，77岁了，湖北人，据说和A（广东客家人）是60年代武汉华中农学院的大学同班同学，一起走到现在也不容易；C是广州本地人，76岁，他老婆全天照顾他。C脾气火爆，动不动就骂他老婆，常常大小便失禁要清理，他老婆很厌烦，经常诅咒他说为什么不早死……。看来多恩爱的夫妻在长时间大病面前都只是同林鸟，所谓大难来临各自飞，能留下来相互照顾就算非常不错了。晚上A的监测仪连接线时不时被他扯下，报警声响过不停，一夜无眠。<br> 
+&emsp;&emsp;12月19日，早上A的老婆离开病房回家拿东西，A在床上用尿壶拉了尿，叫护工帮忙倒掉，护工说你又没出钱请我陪护，没义务帮你倒尿（其实不管请不请陪护都要收每天10元的陪护费），这个世界就是这么现实！因A总是把生命监测仪的线扯开，经医生同意撤除该仪器，此举埋下了隐患。今晚A似乎比任何时候都安静，没什么吵闹，他老婆也一早在他的病床旁边打开简易床睡觉；C每隔一小时就说要起床坐一会，或要拉屎拉尿，他老婆不胜其烦，不时咒骂他，吵得我难以入睡。<br>
+&emsp;&emsp;12月20日，凌晨三点，迷迷糊糊中，突然听到A “啊！啊！”大叫两声，C的老婆马上叫醒A的老婆，A老婆起床叫她老公，没反应，即时叫护士进来，几个护士马上给A做心脏按压，很快值班医生也来了，急急忙忙将A推进监护室抢救，可惜回天无力，死了！A的老婆及赶来的女儿哭哭啼啼回到病房，等待其他亲属来办理后事。据说A是心脏爆裂而死，生命是如此脆弱！心里很不舒服，再也睡不着。1130办好了出院手续，赶快回家，好像做了一场噩梦，九死一生逃出生天的感觉。<br>
+&emsp;&emsp;几点感悟：1、别太自信，以为自己平时没病不肯去医院。像我这样生活规律、饮食清淡、不抽烟少喝酒、经常运动，几十年没去过医院看病的人还不是说病就病？；2、结婚找伴侣别在乎什么郎才女貌门当户对，找到在你大病时能无怨无悔的一直陪护你的人，那才是幸福的婚姻；3、在健康面前，什么金钱、权力、亲情等都不重要；4、有钱不是万能，但没钱是万万不能，平时一定要预留至少5万块随时可以拿出来的钱，否则一旦有病拿不出钱医院不会给你抢救、用药；5、人生无常，好好珍惜活着的每一天！
+</font></div></h3>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

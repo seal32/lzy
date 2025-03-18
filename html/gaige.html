@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>聊聊“改革”那些破事</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2><center>聊聊“改革”那些破事</center></h2>
+<img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2019-10-30</font>
+<p><h3><div style="font-weight:500">&emsp;&emsp;最近几十年，听得最多的恐怕是“改革”这个词。无疑，改革给中国社会带来了巨大的变化，但是，多少恶行假汝之名，成为特权阶层肆无忌惮的欺压底层百姓，满足自己私欲的冠冕堂皇的最好借口。
+<br>
+&emsp;&emsp;想不到，有朝一日，我这个在单位兢兢业业、任劳任怨工作的船长，也会成为被改革者、改革的参与者。<br>
+&emsp;&emsp;某年，某位局领导一拍脑袋，决定在全国该系统所有单位中标新立异，率先进行“船员管理体制改革”，提出冠冕堂皇的口号：“精简队伍，提高效率，节约经费，引入竞争机制，提高船员素质”，将原属各单位的船员集中由“船员中心”管理，船舶还是由原来各单位管理，所谓“人船分离”，船员变成各单位的租赁人员。开始，船员觉得反正哪里都是干活，只要工资不少就成，谁知道，很快，改革的“好处”就降临到船员头上：1、当时船员工资执行的还是国发[1993]79号文颁布的工资标准，实行专业技术职务岗位工资制，而我局各级机关执行的是属地工资标准，造成了船员管理中心的船长、轮机长收入还比不上机关的一般工作人员（据后来统计，改革期间船员收入保守估计比机关同类人员少十几万元）；2、船员管理中心的船员调派到用船单位，人家高兴的话给你一点奖金，不高兴时一点不给，船员的应得利益无法得到保障；3、用人单位一味强调用最少的人办最多的事，甚至一个人管几条船；有的单位瞎指挥，明知船舶不适航硬要船长开船；有的单位要求船员除了完成船上工作外，还要到机关办公室搞卫生，他们认为你是外聘的，叫你做什么你就要做什么，不然就一脚踢你回船员中心，船员敢怒不敢言，憋着一肚子气，心怀不满但又无处发泄，往往做出拿设备出气，甚至暗中搞小破坏等不理智行为，对船舶安全危害极大；4、船员谁也不知道什么时候会被用人单位踢走，很多人抱着得过且过的思想，该定期进行船舶保养的工作能拖则拖，实在没办法就敷衍了事或动不动就要用人单位派人修理，长此下去船舶适航率低，对用船单位的工作带来很大影响……。<br>
+&emsp;&emsp;孔夫子云：“不患寡而患不均，不患贫而患不安”。改革本应是要改变陋习，革除弊端，而不应是为了特殊阶层利益而损害大多数人利益，搞得人心惶惶。实在看不过眼，心中不忿，向领导提出休假，反正工资没少多少，正好利用这段时间自学电脑、网络知识。当时船员中心领导对用人单位也有意见，赌气批准了。之后，很多船员也提出要休长假，好戏开场了……，不说也罢。<br>
+&emsp;&emsp;连续八个月长假，悠游自在，乐不思蜀。某日，无意中听说单位公布：船员中心机关中层及以下职位公开在全局范围内竞争上岗。无所事事，抱着玩一玩的心态，报名竞争船员调配部（人事部）经理一职。经笔试、面试，糊里糊涂的就公布我竞争成功，聘任为人事经理，主管：人事管理、工资发放、船员调配、培训、招聘、证书管理、社保管理、年度考核等。本不想干，觉得当船长比搞人事省心，但想想与其被动被改革还不如主动参与改革，起码有机会在该职务力所能及的范围内为船员争取利益。<br>
+&emsp;&emsp;从船上到机关，两个不同的环境，要重新学习、适应的东西很多，特别是要熟悉政策法规、应对文山会海、处理人际关系等，很烦人，好在一段时间后，这些都能慢慢适应。<br>
+&emsp;&emsp;04年，按领导的要求，本局所属省内各地区有关单位船员由船员中心接管，明知这样的管理方式弊大于利，我们也只能照办。船员中心共接管船员612人，其中在编船员520人，外聘船员92人。虽然有的单位领导对这样的管理方式心存异议，但大多表面都是高唱赞歌，高呼领导改革决策英明，可见官场有多虚伪和丑陋！<br>
+&emsp;&emsp;改革后，船员不是原单位的人了，很多船员被原单位领导以各种借口“退回”船员中心，高峰时达90多人。这些下岗的人大部分被用人单位列入“黑名单”，很难再在原单位安排上岗，情绪激动，怨气极大。船员中心每个月召集他们开一次会，领导一般都怕出面和他们面谈，叫我出面应对，我能做的只是给他们通报一下改革的情况，做好解释说服工作，一般他们还是会给我这个曾经的船长一分薄面，不敢说太过激的话。有一次某副厅级领导来视察，趾高气扬的走进会场想给这帮船员训话，结果被他们拍桌子质问得哑口无言，落荒而逃，事后他走进我办公室，气冲冲的对我说这些船员纪律性太差，要我组织他们去军训，我只能一笑置之。老子云：“民不畏死，奈何以死惧之”，你的改革举措严重损害了人家的利益，不和你拼命就算客气了。<br>
+&emsp;&emsp;这样下去也非长远之计，后来采取了几个办法：一是利用国家的有关政策，在自愿的前提下，批准了51人提前退休；二是异地、不同单位调动、外派，所谓“此处不留爷自有留爷处”；三是送一些符合条件的人去培训考证再另行派遣到新的岗位，局面暂时得以缓解。<br>
+&emsp;&emsp;一波未平一波又起，被批准提前退休的人员因退休待遇问题多次集体找局领导反映，没有得到满意答复，准备集体到北京上×。领导慌了，责成我们做好这些人的思想稳定工作。我和政工科的一个同事负责到闹得比较凶的十几个人家里进行家访，厚着脸皮劝解。说老实话，连我自己都想不通何况他们呢，待遇问题不解决，说什么都没用，心里巴不得他们去上×呢，但处于自己的位置又不能这样说，只能说些不要激化矛盾、会向上级反映解决之类的废话，同时说明《信访条例》和《治安管理处罚条例》的有关规定，提醒他们千万别冲动，总算说服他们答应暂时延缓上×。后来，领导权衡再三，同意退休人员参照执行地方生活津贴，但要等三产技协收入由局统筹统管后再执行。由此可见，当官的最怕什么？上×！<br>
+&emsp;&emsp;有些被用人单位退回的船员，我们求爷爷告奶奶的想尽办法安排他们重新上岗，谁知有些人以各种借口不服从分配，到机关大吵大闹，甚至进行人身安全威胁。对于这些无理取闹的人，不能惯着他，该怎么处理就怎么处理。<br>
+&emsp;&emsp;考虑到船员队伍培养问题，我们从社会船员中招聘了一批驾驶员、轮机员；从×洋学校、××技工学校、×水学校招聘了几十名应届毕业生，都是经过我们公平公正考核、面试进来的。后来从某学校招聘来的学生对人说，学校老师收了他们每人一笔钱，说是用来打点来学校招聘的人。TMD，师德败坏啊，事实上我们从来不会收学生一分钱，他们以这样的借口让那些穷学生花钱，太卑鄙！<br>
+&emsp;&emsp;2004年10月，某分支局向机关职工发放了四大节日的节日津贴共4000元，给船员发放“过节费”700元，船员觉得不合理，意见很大，数次聚集，情绪激动，拒绝领钱，后经分支局领导多次做工作，船员总算领了钱，但始终存在不安全隐患，希望船员中心去下面给他们一个说法。这个“好差事”又是我和政工科的同事去。到达后由某分支局副局长陪同，召集船员开会：我现场解答船员提出的问题；介绍近期船员管理改革动态；对船员提出要求；合理且暂时不能解决的问题向上级反映争取尽快解决。也只能这样了，我又没权解决钱的问题。<br>
+&emsp;&emsp;这样的管理方式名不正言不顺，各种问题层出不穷，忙于招架，那几年身心俱疲，日子难熬，比在船上当船长辛苦多了（诸事一言难尽，在此略过）。不过有时做成了一些诸如船员招聘、船员培训等事情，也会觉得有些许成就感。<br>
+也许上级（包括北京总局）领导听到一些反映，有时开会问起我们对船员管理体制改革的意见，我都直言不讳提出意见，阐明这样的改革不切合本系统的实际，弊大于利。2008年6月，上级终于决定解散船员中心，哪里来的回哪里去，船员由各单位自行管理。改革闹剧落下帷幕，寿终正寝，皆大欢喜，大家都得到解脱。我调到新的岗位，开始了新的工作……。</div></h3></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

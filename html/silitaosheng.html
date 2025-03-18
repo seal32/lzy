@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>死里逃生</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>死里逃生</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2010-01-24</font></p>
+<p>1991年春节前，因我的一念之差，做出了一个错误的判断，导致船舶和人员陷入险境，至今回想起来仍觉后怕。</p>
+<p>当时，我们已经出海一个多月，完成任务进入湛江港补给，此时离大年三十不到十天。由于冷空气的影响，南海北部持续刮起八、九级大风，海面大浪到巨浪，返航广州的时间被迫一再推迟。船员归家心切，人心浮动，很多外省的船员已托人买好了回家过年的车票，就等船回广州了，他们时不时问我什么时候能够开航，看样子如果我再不决定开航他们就要造反，不胜其烦，压力很大。考虑了一个晚上，我最终决定明天中午开航。</p>
+<p>2月5日上午，报务员送来英文气象报告，报告说一股强冷空气已南下，将于明天早上进入南海，南海海面今日东北风7-8级，明天8-9级，阵风10级。为保险起见，我再叫报务员接收日本JMH的气象传真图，图上显示冷锋已迫近华南沿岸，且等压线密集，气压梯度大。考虑到本船抗风能力为11级，按正常速度可以赶在冷锋下海前进入珠江口。我吩咐水手长绑扎固定船上移动物品，封闭舱口和水密门、窗，通知轮机部检查机电设备，调整压载等，之后按时启航。</p>
+<p>船过了湛江港1号灯浮转向围夹洲的航线，顶风航行，越走风浪越大，心中隐隐有种不祥的预感。看来天气预报并不准确，冷锋其实已经提前进入南海了。此时真是进退两难，继续前进船舶能否顶住大浪的袭击？大风浪中掉头回湛江港会否导致船舶倾覆？我权衡利弊，还是决定继续前进。</p>
+<p>天空灰蒙蒙的，狂风呼啸，一排排小山似的巨浪遮天蔽日滚滚而来，已经分不清那是水那是天了；船体纵摇剧烈，船头常常被大浪压入水中，再慢慢挣扎着拱出水面，船尾被抬起，两只螺旋桨露出水面在空气中空转，发出嘎嘎的怪响；浪头打上桅杆顶，再像瀑布一样冲泻下来；巨浪拍击船体，发出阵阵雷鸣般的响声，伴随着船体钢板的嘎嘎声，船体像快要折断一样，非常恐怖；不规则的横浪引起船舶横摇近40度，固定不牢的房间物品满地乱滚；船员的呕吐声此起彼落，似身处屠宰场；大厨在厨房试图做晚饭，被晃得站立不稳，差点一头栽进煮着开水的锅里，吓得落荒而逃……。</p>
+<p>驾驶室只剩下我、三副和一个操舵水手在值班，机舱只有一个轮机员在坚守岗位，绝大部分船员都晕得爬不起来。平时也晕船的我这个时候却格外精神，坚持站在驾驶台指挥，也许是肩负着船舶及人员安全，责任重大，神经高度紧张忘记了晕船。突然，透过驾驶室玻璃窗看到船头仓库舷窗发出异常的亮光，赶快广播通知水手长去看看，水手长从住舱出甲板，艰难爬行50多米到达仓库，通过仓库的电话报告说是电路短路引起的的打火，已断开仓库电源开关。返回时，眼看着一个大浪打上甲板差点把水手长冲下海，好在另一舷又一个涌浪过来，把他抛回甲板来，运气好，总算捡回一条命。</p>
+<p>午夜12点，轮到二副值班，三副去叫班，不一会就回驾驶台说二副晕船很厉害，起不了床。平时看起来很坚强的大男人在风浪面前显得懦弱无比，没经过晕船的人可能无法理解，但我们理解。无奈，我只好叫三副下班休息，自己继续留在驾驶台顶替二副值班，其实，就算二副能值班我也不敢离开驾驶台。</p>
+<p>煎熬中，时间一分一秒过去，这时觉得一分钟特别漫长。凌晨4点，大副上驾驶台接班，看到倾斜仪指针经常摆到40多度，船好像要倾覆一样，非常担心。此时如果船舶倾覆力矩大于回复力矩船就会翻沉，或者此时主机有故障停车，不能保持顶浪航行船也会打横翻沉。老天保佑，我们船的理论极限倾覆角是55°，目前还没到极限值，两台德国生产的主机质量过硬，一直都运转正常。为保险起见，我叫大副将车速降至额定转速的40%，同时通知机舱值班人员将船尾压载舱打满海水，能够做的安全措施都做了，剩下的只有听天由命。</p>
+<p>我离开驾驶台，到全船各部位转了一圈，检查船舶情况，所见之处一片狼藉。走到餐厅，发现有一个人倦缩在一角，身上穿着救生衣，原来是电机员老魏。问他干嘛呆在这里，他说跑了几十年船还没见过这么大的风浪，怕船出事不敢待在房间睡觉，干脆穿上救生衣，一旦有事就准备逃命。我苦笑，说实话，真的有事，在波涛汹涌的茫茫大海中谁也逃不掉。</p>
+<p>6日早上7点，驶过小蒲台进入珠江口，风停浪止，船立即平稳下来。终于熬过来了，大家纷纷出来找东西吃，都有一种死里逃生的感觉……。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

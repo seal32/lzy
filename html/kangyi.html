@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>抗疫记</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+
+</head>
+<body>
+<h2>抗疫记</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  <font color="silver">2022-12-22</font></p>
+<p>疫情三年，一直如履薄冰，谨小慎微，小心防护，想不到，在如今瞬间“躺平”的大环境下，防不胜防，中招了。</p>
+<p>15日，老婆去骨科医院开药并去了几个地方办事，我下午去开了个会。大家都戴N95口罩，全程做足防护措施。究竟是在何时何地传上的，无从知晓。</p>
+<p>16日，老婆出现了疑似感冒症状，喉咙痛，干咳，头痛，耳朵骨痛，全身骨痛，无发烧。</p>
+<p>17日，老婆症状越来越严重，基本上都要躺床上，怀疑是得了新冠。这两天我感觉一切正常，专心照顾她，我还对她说如果你是新冠按道理应该传给我了啊，为什么我没症状？</p>
+<p>18日早上，神采奕奕，去公园散步快走4圈，公园里没几个人。刚好公园内有单人单管的核酸检测，顺带做了核酸。18号下午，我的症状开始出现: 头痛，背部肋骨痛，全身无力，喉咙干，有点痰，偶尔干咳几声，发冷，没胃口，检测体温36.5°，没发烧。冲了包清热颗粒冲剂，头晕脑胀，坚持做了晚餐，两个人都不想吃，倒掉一半。晚上核酸结果出来，阳性！晚上发冷更厉害，我和老婆每人各吃了两粒布洛芬，从土澳带回来的，过期了，管它呢，照吃。15分钟左右，药效起作用，症状明显缓解，躺在床上看完世界杯决赛阿根廷对法国上半场，昏昏睡去。</p>
+<p><center><a href="/images/kangyi1.jpg"><img src="/images/kangyi1.jpg"></a></center></p>
+<p>19日，早上药效一过，症状又和昨天一样，且咳出白痰。大量喝水，冲了维C泡腾片。浑身不舒服，整天躺在床上。</p>
+<p><center><a href="/images/kangyi2.jpg"><img src="/images/kangyi2.jpg"></a></center></p>
+<p>幸运的是，老婆今天开始症状明显好转，轮到她照顾我，煲粥、煮饭都是她做的，没什么食欲，早餐吃了一碗稀饭一个鸡蛋一个包，午餐、晚餐用汤泡了半碗米饭，晚饭后继续服用了两粒布洛芬。</p>
+<p>好在两个人不是同时症状发作，错开了两天，否则真的很麻烦。</p>
+<p>20日，老婆的症状进一步缓解，我却没什么变化，全身疼痛是减轻了一点，但还是头痛，发冷，咳嗽加剧。继续大量喝水，冲服维C泡腾片。晚餐吃了点米饭，吃了两粒panadol。</p>
+<p><center><a href="/images/kangyi3.jpg"><img src="/images/kangyi3.jpg"></a></center></p>
+<p>洗了个热水澡（据说洗澡会加重病情应尽量避免），看了一会电视分散注意力。晚上睡觉时咳嗽更加厉害，恍惚肠子都要咳出来，起床喝了两汤匙川贝枇杷膏，效果立竿见影，5分钟后咳嗽明显缓解。一晚上辗转反侧无法入眠。</p>
+<p><center><a href="/images/kangyi4.jpg"><img src="/images/kangyi4.jpg"></a></center></p>
+<p>21日，凌晨3点半，感觉有点饿，起床热了杯牛奶喝。迷迷糊糊睡着了。早上起床，头痛缓解，精神好很多。还有咳嗽、流鼻涕、胸骨痛、口腔溃疡、鼻粘膜出血等症状。吃了一碗鸡蛋煮麦片，两个肉包。老婆的新冠症状基本上全部消失，忙着晾洗消毒衣物，炖汤。但愿过几天能完全康复，平安度过此劫……。</p>
+<p>几点体会:<br>
+1、虽然躺平是迟早的事，但从层层加码防疫到无预警瞬间彻底躺平，步子迈得太大。不能因为所谓56所大学有少数人“举白纸”××就即时放开，缺乏药物等必要的准备，对老年人伤害很大。</p>
+<p>2、中招与否和防护无关，只与运气有关。</p>
+<p>3、别被砖家误导说什么大部分是无症状感染，他们所说的无症状或许只适用于年轻群体，对于老年人根本就不存在。昨天香港感染15000多人，死亡50多人，死亡率也不低。</p>
+<p>4、别相信每天公布的感染人数，现实是越来越多人阳了，全民被阳似乎无可避免。上报不上报都毫无意义，政府根本没空理你。自行在家隔离抗疫，自求多福吧。</p>
+<p>5、别相信什么神药，实在难受就吃两片止痛药，目的是为了缓解疼痛，晚上能睡好一点，让身体有能量抵抗病毒。</p>
+<p>6、运气好的话，第4天开始病情明显好转，再休息恢复几天估计就会没事。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

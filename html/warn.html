@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>warn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word !important;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 12px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<body>
+<h2>海上警戒监控</h2>
+<p><img src="/images/captain02.jpg">  <font color="silver">原创  |</font>  <a href="http://www.seal32.cn">船长</a>  2022-04-26</p>
+<p>某位哲人曾经说过：世界上有三种人：活着的人，死去的人，在海上漂泊的人。</p>
+<p>2001年3月，从中国经日本至美国的“亚太二号”海底光缆敷设工程动工，根据《联合国海洋法公约》、《中华人民共和国海上交通安全法》、《中华人民共和国领海及毗邻区法》、《中华人民共和国专属经济区和大陆架法》，为了维护国家主权，加强海区管理，需要对施工船及相关海域进行警戒、监控，上级调派我船执行该项任务。</p>
+<p>3月15日上午，厨工按出海人数36人，每人每天伙食费16元的标准购买了两个月的主、副食品，因船在锚地抛锚，我安排水手长带几个水手放工作艇去码头将食品运回船。在放艇的过程中，艇尾吊柱突然脱开，7米长的工作艇头部吊着，尾部拍下水，拔起的尾吊柱差一点就把站在艇尾一个水手的头颅敲碎！真是出师不利，心里隐隐掠过不祥的预感。检查原来是尾吊柱与艇底龙骨的连接插销脱落引起，即使修复，主副食品运回船上，分门别类放入船上的冰库。</p>
+<p>所有准备工作就绪。珠江大雾弥漫，能见度不到二百米，站在驾驶台有时连自己船的船头也看不清，这种天气在港内本来是不应该开航的，但为了准时到达监控海域，只好违规航行了。因为外面什么也看不清，平时站在驾驶台窗前叫口令指挥的我，此时只能站在雷达显示器前，望着岸上地形回波、水上目标回波及雷达计算显示的避碰数据进行分析判断，不断叫舵令指挥船舶穿过浓雾沿着航道航行，像玩电子游戏机一样。虽然我讨厌日本人，但日本人生产的自动避碰雷达确实不错！</p>
+<p>2000浓雾散去，航经香港南部的担干水道，该水域进出香港的船舶特别多。我已在驾驶台站了八个多小时了，这里海域开阔，主要考虑的只是避让问题，估计驾驶员也可以应付得来，就叫当班的三副负责指挥，我下去歇会。2030，听到汽笛声，心想可能有情况，赶紧跑上驾驶台，看到右侧一艘大型集装箱船小山一样的黑影快速逼近，其左舷红色舷灯清晰可见。三副此时方寸大乱，减低车速并叫“左满舵”想左转避让，我一看不行，在一瞬间反应过来，马上叫了个“右满舵”并将车钟按至“全速前进”！在船上，不管当时是哪个驾驶员在值班指挥，只要是船长在驾驶台叫的舵令，操舵水手都要听船长的，舵手马上打了个“右满舵”，船尾急速向左转，之后再叫了个“左满舵”，刚刚在来船即将撞上船尾的瞬间让过，距离不到10米，要是慢几秒的话，我们船可能被拦腰撞翻，真是万幸！</p>
+<p>17日1105，到达预定海域，用VHF16频道与施工船联系，告知我船已经到达。光缆敷设船Maersk Responder,是全世界仅有的几艘自动化海底光缆敷设船之一，属于丹麦的Global Marine Systems Limited 所有，排水量一万二千吨。在水深少于200m的海域，光缆要埋入地下1.5m深，需要在船尾放下挖掘机器人进行海底挖掘及埋设光缆施工作业，如果在施工沿线有渔船捕捞或其它船舶经过，则会影响施工船及来往船舶的安全，我们的任务就是在周围海域警戒、监控，防止船舶进入施工船方圆2海里的范围内。</p>
+<p>晚上，大副报告，二副病倒了不能当班，说他由于出海前就患了重感冒，加上晕船，呕吐不止，最后连黄胆水和血都吐出来了，两天也没吃东西，情况很严重。我去看他，见他躺在床上脸无血色，叫人到医务室拿点药给他吃（以前船上配有医生的，现在船上不配医生了，只能在出海前备点药放在医务室以备急用），并交代厨师熬稀饭给他吃，实在不行的话再送他上岸治疗，不过这样来回会花很长时间。好在老天保佑，二副病情慢慢稳定，很快康复。</p>
+<p>当日晴空万里，海面平静。1500，施工船几个红毛碧眼的鬼佬开过来一只橡皮艇，接我们上船商量工作。我和两个随船监督员登艇前往，先绕施工船一圈拍摄施工情况，之后爬上软梯，登上主甲板。布满各种设备的甲板上空无一人，光缆正慢慢地通过导桥放下海。进入驾驶台，其豪华及现代化程度令人惊叹。几个工作人员正在操纵、监视着电脑设备。offshore superintendent（离岸主管）Gary Aylmer 先生热情地接待了我们，详细地向我们介绍施工情况和要求，我们也向他提出了我们的要求。1630施工船船长亲自开橡皮艇送我们回船，又应邀参观了我们船的驾驶台和我的房间。可惜在学校学的英语大部分都还给老师了，一般的专业英语还可以勉强应答几句，再想和他们说多几句就比较困难了。</p>
+<p>18日，海面刮起6-7级、阵风8级的东北风，大浪。我船像一叶扁舟，摇晃剧烈，要不断用车舵控制船首保持顶浪。0850施工船停止作业，我船保持在其船尾警戒。东京JMH地面分析气象传真图显示，1022Mb高压中心以20kt的速度向东移入南海北部，估计其影响很快减弱。虽说经过几天的摇晃很多人都已经慢慢适应，但这种漫无目标的海上警戒让人渐渐厌烦。</p>
+<p>19日下午，天气好转，施工船继续作业，随后几天，海面轻浪到中浪，警戒工作顺利进行。除了按时值班外，船员们百无聊赖，只好打牌、钓鱼消磨时光。海面上成群结队的鲨鱼在游动，很多小鲨鱼上钩成为船员们的猎物，不过鲨鱼肉不好吃，只能用来煮汤喝；大群飞鱼直接飞上甲板，随便都可以捡到一桶，马上处理干净，放电饭煲煮熟，不用加油盐，原汁原味，吃鱼喝酒，鲜美可口；晚上厨师先煮好粥，然后船员们拉几盏灯放在船舷旁边靠近海面，一会儿，一大堆鱿鱼及其它叫不出名的海鱼就会聚集在灯下，轻而易举用网兜捞上来，全船人就可以吃上一顿美味的海鲜粥，那个味道至今想起来都流口水……。这样平静的海上生活持续了几天，有时感觉也挺有意思的。</p>
+<p><center><a href="/images/sea08.jpg"><img src="/images/sea08.jpg"></a></center></p>
+<p><center><a href="/images/sea04.jpg"><img src="/images/sea04.jpg"></a></center></p>
+<p>26日，真是天有不测风云，前几天还是风平浪静，温柔可爱的大海转眼就变得波涛汹涌，面目狰狞。0430,警报声大作，我马上跑上驾驶台，看到火灾报警显示器指示灯在闪烁，指示平台甲板房间着火！带着几个船员到水线下的平台甲板查看，原来是有一个房间舷窗没关，海水涌入引起电器插座短路冒烟，启动了感烟式火警探头报警，幸好没有引起火灾。0730开始，风越刮越大，一排排的巨浪打在船头，发出轰隆隆的巨响；船尾被海浪抬起，车叶打空车发出阵阵恐怖的怪叫声；舱室里没固定好的物品满地乱滚，厨房的大冰箱倒下来，三副房间的保险柜也倒了。船横浪时横倾角近40度，值班人员忍受着晕船的痛苦，与风浪搏斗，坚守岗位。施工船早已停工，靠着高科技的DPS(动态定位系统），船头顶浪，自动保持在原位。鬼佬要求我们尽量不要离他们太远，开始时，我们还能利用车、舵操作保持原位，但是风浪太大，要保持航向主机平均每分钟就要合、脱排一次，对主机非常不利。后来不得已采取反复来回顶浪、顺浪慢速航行，保持与施工船一定的距离，我们称之为“犁田”的方法。不过在船掉头时要非常小心，操作不当会被大浪倾覆。广州、东京、香港、高雄、马尼拉气象台都预报南海东北部东北风8-9级，大浪到巨浪，我们现场目测，浪高至少有6m，此后几天，基本上都是维持大浪到巨浪的天气，海面上只有我们孤零零的两艘船，人家施工船依靠高科技手段自动“定”在海上，我们却要连续24小时在海上“犁田”顶风抗浪，差距实在是太大了。为了避免频繁掉头，有时我们离开施工船稍远一点，施工船马上骗我们说有渔船要求我们回来，其实他们是害怕海盗，因为据统计海盗袭击事件占世界船舶事故的44%，前几年海盗劫持“长胜”轮，将23名船员沉尸海底的事件就是在这一海域发生的。连续的大风浪天气，船员们从难受变得烦躁不安，似乎人人心理都有点变态，精神逐渐趋向崩溃边缘，常常无缘无故地大声吼叫，或对着大海自言自语，再这样下去，恐怕会出大问题。</p>
+<p><center><a href="/images/sea12.jpg"><img src="/images/sea12.jpg"></a></center></p>
+<p>30日，天无绝人之路，风浪明显减弱。日本JMH天气图显示，温带锋面气旋已逐渐远离南海，未来几天天气好转，但1028mb冷高压中心位于41N 105E，正向东南移动，很快又会影响南海。施工船抓紧时间作业。船员们又好像活过来了，按部就班的值班、睡觉、打牌、钓鱼。我松了一口气，看着海上日出、日落的美景，惬意极了。</p>
+<p>31日，傍晚，施工船作业至33#点，水深两百多米，收回挖掘机器人，直接放缆，速度明显加快。</p>
+<p>4月1日，2230,施工船到达36#作业点，接近日本列岛。水深四百米，到达了约定的警戒终点，我们用高频取得了施工船对我们完成警戒任务的确认，并同步录下了雷达影像。2300，我下令全速返航开往汕头休整，全船一片欢腾！</p>
+<p>4月5日回到广州，结束了这次海上警戒监控航程。</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
