@@ -1,6 +1,10 @@
 ﻿#EXTM3U x-tvg-url="http://epg.51zmt.top:8000/e.xml.gz"
 
 #EXTINF:-1 group-title="常看",中天新闻
+http://ali.hlspull.yximgs.com/live/_duan_ju_bao_bao_bao_xiao_shi_hou_zuo_guo_ya___CTI__HD.flv
+#EXTINF:-1 group-title="常看",中天新闻
+http://ali.hlspull.yximgs.com/live/_duan_ju_bao_bao_bao_xiao_shi_hou_zuo_guo_ya___CTI_2_HD.flv
+#EXTINF:-1 group-title="常看",中天新闻
 http://aktv_stream1.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8
 #EXTINF:-1 group-title="常看",TVBS新闻
 http://aktv_stream1.m16tv.cfd/stream/aktv3/null-2/AKTV.m3u8
