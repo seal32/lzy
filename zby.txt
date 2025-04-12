@@ -50,7 +50,7 @@ CCTV16,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=49&FvSeid=1&Fsv_ctype=LI
 新视觉,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=113&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=0&Pcontent_id=8114.m3u8
 
 🐸台蛙,#genre#
-中天新闻,http://aktv-stream.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8#https://pixman.mytvsuper.com.mp/Smart.php?id=ctinews
+中天新闻,http://aktv-stream.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8#https://pixman.mytvsuper.com.mp/Smart.php?id=ctinews#http://eu.huohuoaa.tech:1025/Smart.php?id=ctinews
 TVBS新闻,http://aktv-stream.m16tv.cfd/stream/aktv3/null-2/AKTV.m3u8#http://61.221.215.25:8800/hls/9/index.m3u8
 中天娱乐,http://61.221.215.25:8800/hls/47/index.m3u8
 中视,http://aktv-stream.m16tv.cfd/stream/taiwan/null-4/AKTV.m3u8
@@ -124,22 +124,6 @@ NEWS24,https://n24-cdn-live.ntv.co.jp/ch01/index.m3u8
 Global News,https://live.corusdigitaldev.com/groupa/live/48a5882b-a1ec-42d7-bfd7-6c2739e737da/live.isml/.m3u8
 
 ⚙测试,#genre#
-CCTV1,http://vip.396621173.xyz:35455/gaoma/cctv1.m3u8
-CCTV2,http://vip.396621173.xyz:35455/gaoma/cctv2.m3u8
-CCTV3,http://vip.396621173.xyz:35455/gaoma/cctv3.m3u8
-CCTV4,http://vip.396621173.xyz:35455/gaoma/cctv4.m3u8
-CCTV5,http://vip.396621173.xyz:35455/gaoma/cctv5.m3u8
-CCTV5+,http://vip.396621173.xyz:35455/gaoma/cctv5p.m3u8
-CCTV7,http://vip.396621173.xyz:35455/gaoma/cctv7.m3u8
-CCTV8,http://vip.396621173.xyz:35455/gaoma/cctv8.m3u8
-CCTV9,http://vip.396621173.xyz:35455/gaoma/cctv9.m3u8
-CCTV10,http://vip.396621173.xyz:35455/gaoma/cctv10.m3u8
-CCTV11,http://vip.396621173.xyz:35455/gaoma/cctv11.m3u8
-CCTV12,http://vip.396621173.xyz:35455/gaoma/cctv12.m3u8
-CCTV13,http://vip.396621173.xyz:35455/gaoma/cctv13.m3u8
-CCTV14,http://vip.396621173.xyz:35455/gaoma/cctv14.m3u8
-CCTV15,http://vip.396621173.xyz:35455/gaoma/cctv15.m3u8
-CCTV16,http://vip.396621173.xyz:35455/gaoma/cctv16.m3u8
 
 🇨🇳央视,#genre#
 
