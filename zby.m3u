@@ -1,7 +1,7 @@
 ﻿#EXTM3U x-tvg-url="http://epg.51zmt.top:8000/e.xml.gz"
 
 #EXTINF:-1 group-title="常看",中天新闻
-http://aktv-stream.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8
+https://pixman.mytvsuper.com.mp/Smart.php?id=ctinews
 #EXTINF:-1 group-title="常看",TVBS新闻
 http://aktv-stream.m16tv.cfd/stream/aktv3/null-2/AKTV.m3u8
 #EXTINF:-1 tvg-id="141" tvg-name="凤凰中文" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/fenghuangzhongwen.png" group-title="常看",凤凰中文
