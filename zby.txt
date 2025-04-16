@@ -4,14 +4,17 @@
 凤凰中文,http://php.jdshipin.com/TVOD/iptv.php?id=fhzw
 凤凰中文,https://cdn.163189.xyz/live/fhzw/stream.m3u8
 凤凰中文,http://cdn.132.us.kg/live/fhzw/stream.m3u8
+凤凰中文,http://aktv_stream.m16tv.cfd/stream/aktv/null-3/AKTV.m3u8
 
 凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
 凤凰资讯,http://php.jdshipin.com/TVOD/iptv.php?id=fhzx
+凤凰资讯,http://aktv_stream.m16tv.cfd/stream/aktv/null-4/AKTV.m3u8
 
 无线新闻,http://cdn3.132.us.kg/live/wxxw/stream.m3u8
 无线新闻,http://php.jdshipin.com/TVOD/iptv.php?id=tvbxw
 无线新闻,http://php.jdshipin.com/TVOD/iptv.php?id=wxxwt
 无线新闻,http://php.jdshipin.com/smt.php?id=inews_twn
+无线新闻,http://aktv_stream.m16tv.cfd/stream/aktv/null-1/AKTV.m3u8
 
 翡翠台,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=31&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=0&Pcontent_id=8114.m3u8
 翡翠台,http://cdn.163189.xyz/live/fct4k/stream.m3u8
@@ -48,6 +51,9 @@ CCTV16,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=49&FvSeid=1&Fsv_ctype=LI
 
 🐸台蛙,#genre#
 中天新闻,https://pixman.mytvsuper.com.mp/Smart.php?id=ctinews
+中天亚洲,https://pixman.mytvsuper.com.mp/Smart.php?id=ctiasia_twn
+中视新闻,http://aktv_stream.m16tv.cfd/stream/taiwan/null-13/AKTV.m3u8
+东森新闻,http://aktv_stream.m16tv.cfd/stream/aktv2/null/AKTV.m3u8
 
 🌺珠江,#genre#
 凤凰卫视,http://116.199.5.51:8114/index.m3u8?3Fsv_chan_hls_se_idx=77&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=&Pcontent_id=.m3u8
