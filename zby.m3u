@@ -1,13 +1,5 @@
 #EXTM3U x-tvg-url="http://epg.51zmt.top:8000/e.xml"
 
-#EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="https://www.seal32.cn/logo/中天新闻.png" group-title="常看",中天新闻
-http://122.117.71.103:8540/http/220.130.87.218:8081/hls/78/80/ch063max.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="中天亚洲" tvg-logo="" group-title="常看",中天亚洲
-
-#EXTINF:-1 tvg-id="6073" tvg-name="TVBS新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/TVBS新闻.png" group-title="常看",TVBS新闻
-http://61.221.215.25:8800/hls/9/index.m3u8
-#EXTINF:-1 tvg-id="6069" tvg-name="东森新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/EBCNews.png" group-title="常看",东森新闻
-
 #EXTINF:-1 tvg-id="141" tvg-name="凤凰中文" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/fenghuangzhongwen.png" group-title="常看",凤凰中文
 http://php.jdshipin.com/TVOD/iptv.php?id=fhzw
 #EXTINF:-1 tvg-id="141" tvg-name="凤凰中文" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/fenghuangzhongwen.png" group-title="常看",凤凰中文
@@ -42,6 +34,15 @@ http://php.jdshipin.com/TVOD/iptv.php?id=tvbp
 http://php.jdshipin.com/TVOD/iptv.php?id=asam
 #EXTINF:-1 group-title="常看",澳视卫星
 http://php.jdshipin.com/TVOD/iptv.php?id=as
+
+#EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="https://www.seal32.cn/logo/中天新闻.png" group-title="常看",中天新闻
+
+#EXTINF:-1 tvg-id="" tvg-name="中天亚洲" tvg-logo="" group-title="常看",中天亚洲
+
+#EXTINF:-1 tvg-id="6073" tvg-name="TVBS新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/TVBS新闻.png" group-title="常看",TVBS新闻
+
+#EXTINF:-1 tvg-id="6069" tvg-name="东森新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/EBCNews.png" group-title="常看",东森新闻
+
 #EXTINF:-1 tvg-id="" tvg-name="广州综合" tvg-logo="https://www.seal32.cn/logo/广州综合.png" group-title="常看",广州综合
 http://116.199.5.51:8114/index.m3u8?3Fsv_chan_hls_se_idx=120&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=&Pcontent_id=.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="广州新闻" tvg-logo="https://www.seal32.cn/logo/广州新闻.png" group-title="常看",广州新闻
