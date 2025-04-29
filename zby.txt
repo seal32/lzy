@@ -53,6 +53,7 @@ CCTV16,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=49&FvSeid=1&Fsv_ctype=LI
 魅力足球,http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=55&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=0&Pcontent_id=8114.m3u8
 
 🐸台蛙,#genre#
+中天新闻,http://122.117.71.103:8540/http/220.130.87.218:8081/hls/78/80/ch063max.m3u8#p3p://108.181.32.169:36521/67e00e6e0009896d9d2efd4d09e16785#p3p://108.181.32.169:36521/64254f7e000dfed1eb1809855c5735ce
 Now News,http://108.181.20.197/livehttpplay?channel_id=20043
 壹新闻,http://108.181.20.197/livehttpplay?channel_id=20028
 非凡新闻,http://108.181.20.197/livehttpplay?channel_id=20034
