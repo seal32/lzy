@@ -19,7 +19,7 @@ http://php.jdshipin.com/smt.php?id=inews_twn
 #EXTINF:-1 tvg-id="126" tvg-name="翡翠台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/TVB翡翠台.png" group-title="常看",翡翠台
 http://116.199.5.51:8114/index.m3u8?3Fsv_chan_hls_se_idx=31&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=&Pcontent_id=.m3u8
 #EXTINF:-1 tvg-id="126" tvg-name="翡翠台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/TVB翡翠台.png" group-title="常看",翡翠台
-http://php.jdshipin.com:8880/TVOD/iptv.php?id=fct4
+http://php.jdshipin.com:8880/PLTV/iptv.php?id=fct3
 #EXTINF:-1 group-title="常看",NOW新闻
 http://mytv.cdn.com.mp/live/now/stream.m3u8
 #EXTINF:-1 group-title="常看",HOY
@@ -36,11 +36,9 @@ http://php.jdshipin.com/TVOD/iptv.php?id=asam
 http://php.jdshipin.com/TVOD/iptv.php?id=as
 
 #EXTINF:-1 tvg-id="" tvg-name="中天新闻" tvg-logo="https://www.seal32.cn/logo/中天新闻.png" group-title="常看",中天新闻
-
-#EXTINF:-1 tvg-id="" tvg-name="中天亚洲" tvg-logo="" group-title="常看",中天亚洲
-
+http://61.163.58.168:2005/play/forward/5?tvid=ctinews2&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaXR5IjoiMCIsImlwIjoiMTA5LjgxLjIxOC45NiIsInR2aWQiOiIyMjA0MTQ0MCIsImVjb25vbWl6ZSI6IjAiLCJleHAiOjE3NDUwMDQzMzcsIm5iZiI6MTc0NDk4NjMzNywiaWF0IjoxNzQ0OTg2MzM3fQ.epCAYnkrQ0dom1tw6JHikm9kNSFN2cv30Ij9gIsPJ6s
 #EXTINF:-1 tvg-id="6073" tvg-name="TVBS新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/TVBS新闻.png" group-title="常看",TVBS新闻
-
+http://61.163.58.168:2005/play/forward/5?tvid=tvbsnewshd&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaXR5IjoiMCIsImlwIjoiMTA5LjgxLjIxOC45NiIsInR2aWQiOiIyMjA0MTQ0MCIsImVjb25vbWl6ZSI6IjAiLCJleHAiOjE3NDUwMDQzMzcsIm5iZiI6MTc0NDk4NjMzNywiaWF0IjoxNzQ0OTg2MzM3fQ.epCAYnkrQ0dom1tw6JHikm9kNSFN2cv30Ij9gIsPJ6s
 #EXTINF:-1 tvg-id="6069" tvg-name="东森新闻台" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/EBCNews.png" group-title="常看",东森新闻
 
 #EXTINF:-1 tvg-id="" tvg-name="广州综合" tvg-logo="https://www.seal32.cn/logo/广州综合.png" group-title="常看",广州综合
