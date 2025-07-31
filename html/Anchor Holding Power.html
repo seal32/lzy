@@ -1,0 +1,581 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>锚系-沉块抓持力计算</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 960px;
+  	margin: 0 auto;
+  	padding: 20px;
+    padding-bottom: 100px;
+    text-align: justify;
+    word-wrap: break-word !important;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+img {
+  max-width: 100%
+  display: block; /* 确保图片为块级元素 */
+  margin-top: 10px; /* 上间距 */
+  margin-bottom: 10px; /* 下间距 */
+  margin: 0 auto; /* 水平居中 */
+}
+
+a img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a[href$=".jpg"] > img,
+a[href$=".jpeg"] > img,
+a[href$=".png"] > img,
+a[href$=".gif"] > img {
+    display: block;
+    margin: 0 auto; /* 使点击图片链接打开原图片居中 */
+}
+
+
+ :root {--mermaid-font-zoom:1.25em ;} 
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h2><a name="锚系抓持力计算" class="md-header-anchor"></a><span>锚系抓持力计算</span></h2><p><span>计算锚在海底的“抓地力”（更准确的说法是</span><strong><span>抓持力</span></strong><span>或</span><strong><span>系留力</span></strong><span>）并非简单地测量其重量，而是涉及锚的类型、海底底质、锚的嵌入状态以及受力角度等多个因素。例如3吨（3000公斤）是锚的自重，但其实际抓持力通常是自重的数倍甚至数十倍。以下是计算和估算锚抓持力的核心方法：</span></p><ol start='' ><li><p><strong><span>核心概念：抓持力系数（Holding Power / Weight Ratio）</span></strong></p><ul><li><p><span>锚的抓持力主要不是靠重量压住海底，而是靠锚爪（或锚臂）</span><strong><span>嵌入</span></strong><span>海底底质（泥沙、粘土、礁石等）后，底质提供的阻力。</span></p></li><li><p><strong><span>抓持力系数</span></strong><span>是锚的</span><strong><span>抓持力</span></strong><span>与其</span><strong><span>自重</span></strong><span>的比值。这是估算抓持力的关键参数。</span></p><ul><li><span>公式：</span><strong><span>抓持力 = 锚自重 × 抓持力系数</span></strong></li><li><span>符号表示：</span><strong><span>F_hold = m_anchor * g * K</span></strong></li></ul><p><code>F_hold</code><span>：抓持力（单位：牛顿 N 或 千牛 kN）</span></p><p><code>m_anchor</code><span>：锚的质量（单位：千克 kg）</span></p><p><code>g</code><span>：重力加速度（≈ 9.81 m/s²）</span></p><p><code>K</code><span>：抓持力系数（无量纲）</span></p></li><li><p><strong><span>锚链抓持力计算</span></strong><span>：锚链平躺海底的部分提供摩擦力，其抓力贡献为 </span><strong><span>W_c · λ_c · L₁</span></strong><span>（λ_c ≈ 1.5~2）。</span></p><p>&nbsp;</p></li></ul></li><li><p><strong><span>关键因素：抓持力系数 </span><code>K</code></strong></p><ul><li><p><code>K</code><span> 值变化范围极大，主要取决于：</span></p><ul><li><p><strong><span>锚的类型：</span></strong><span> 不同类型锚的设计针对不同底质优化抓持力。</span></p><ul><li><strong><span>高性能锚：</span></strong><span> (如 Bruce, Rocna, Ultra, Spade, Delta) 在良好底质下 </span><code>K</code><span> 可达 </span><strong><span>10-30+</span></strong><span> 甚至更高（尤其在硬沙或粘土中深埋时）。</span></li><li><strong><span>传统锚：</span></strong><span> (如 Stockless Admiralty Pattern/船用无杆锚) </span><code>K</code><span> 通常在 </span><strong><span>3-8</span></strong><span> 左右。</span></li><li><strong><span>特殊锚：</span></strong><span> (如 Danforth/燕尾锚) 在软泥、沙底表现优异，</span><code>K</code><span> 可达 </span><strong><span>15-30+</span></strong><span>，但在硬底或岩石上较差。</span></li></ul></li><li><p><strong><span>海底底质：</span></strong></p><ul><li><strong><span>硬沙、密实粘土：</span></strong><span> 提供最佳抓持力，</span><code>K</code><span> 值最高。</span></li><li><strong><span>软泥、松沙：</span></strong><span> 抓持力中等。</span></li><li><strong><span>碎石、鹅卵石：</span></strong><span> 锚爪难以有效嵌入，抓持力不稳定且较低。</span></li><li><strong><span>岩石、珊瑚礁：</span></strong><span> 锚爪可能卡住也可能打滑，抓持力不稳定且风险高（可能损坏锚或海底生态），通常不推荐使用吸附式锚。</span></li><li><strong><span>海草：</span></strong><span> 锚爪难以穿透草甸到达坚实底部，抓持力很差。</span></li></ul></li><li><p><strong><span>锚的嵌入状态：</span></strong></p><ul><li><span>锚是否被正确抛下并有足够拖曳力使其深埋？浅埋的锚 </span><code>K</code><span> 值很低。</span></li><li><span>锚爪是否完全埋入底质？这需要足够的拉力“设置”锚。</span></li></ul></li><li><p><strong><span>受力角度：</span></strong></p><ul><li><span>理想情况下，拉力应沿锚杆方向水平作用于锚（即锚链/锚缆平躺在海底）。如果拉力角度过大（向上抬起锚），抓持力会急剧下降。</span></li></ul></li></ul></li></ul></li><li><p><strong><span>计算示例（估算）：</span></strong></p><ul><li><p><span>已知：锚质量 </span><code>m_anchor = 3000 kg</code></p></li><li><p><span>重力加速度 </span><code>g ≈ 9.81 m/s²</code></p></li><li><p><span>锚自重 </span><code>= m_anchor * g = 3000 kg * 9.81 m/s² = 29430 N ≈ 29.43 kN</code></p></li><li><p><span>假设情况：</span></p><ul><li><p><strong><span>情况A (高性能锚，良好硬沙底，深埋)：</span></strong><span> </span><code>K ≈ 15</code></p><ul><li><span>抓持力 </span><code>F_hold ≈ 29.43 kN * 15 ≈ 441.5 kN</code></li></ul></li><li><p><strong><span>情况B (传统船锚，中等沙泥底)：</span></strong><span> </span><code>K ≈ 5</code></p><ul><li><span>抓持力 </span><code>F_hold ≈ 29.43 kN * 5 ≈ 147.2 kN</code></li></ul></li><li><p><strong><span>情况C (任何锚型，岩石/海草底)：</span></strong><span> </span><code>K ≈ 1-3</code><span> (甚至更低，非常不可靠)</span></p><ul><li><span>抓持力 </span><code>F_hold ≈ 29.43 kN * 2 ≈ 58.9 kN</code><span> (非常不理想)</span></li></ul></li></ul></li></ul></li><li><p><strong><span>重要考虑因素：</span></strong></p><ul><li><p><strong><span>安全系数：</span></strong><span> 工程应用上，</span><strong><span>绝对不能</span></strong><span>按照理论最大抓持力来设计。必须考虑风浪冲击、底质不确定性、锚设置不完美等因素。通常要求</span><strong><span>工作载荷</span></strong><span>（即实际允许施加的拉力）是理论最大抓持力的 </span><strong><span>1/3 到 1/5</span></strong><span> 甚至更低。例如，情况A中理论抓持力441.5 kN，其安全工作载荷可能只有 88.3 kN - 147.2 kN (约 9 - 15 吨力)。</span></p></li><li><p><strong><span>锚链/锚缆：</span></strong><span> 抓持系统不仅包括锚本身。足够长度和重量的锚链/锚缆平躺在海底至关重要：</span></p><ul><li><strong><span>提供吸振缓冲</span></strong><span>：吸收船只因风浪产生的突然冲击载荷。</span></li><li><strong><span>保持水平拉力</span></strong><span>：确保拉力尽可能水平地作用于锚，防止锚被拉起。通常要求锚链/缆长度是水深的 </span><strong><span>5-10倍</span></strong><span>（Scope Ratio）。</span></li></ul></li><li><p><strong><span>专业咨询：</span></strong><span> 对于船舶系泊、海上平台定位等关键应用，必须由专业的海洋工程师根据具体的锚型、详细的海洋地质调查数据、环境条件（风、浪、流）以及安全规范进行精确计算和设计。</span></p></li></ul></li></ol><p><strong><span>总结：</span></strong></p><p><span>一个3吨重的锚在海底的抓持力（抓地力）</span><strong><span>无法仅凭重量确定</span></strong><span>。其关键在于</span><strong><span>抓持力系数 </span><code>K</code></strong><span>，该系数受锚型、底质、嵌入状态和受力角度显著影响。</span></p><ul><li><span>粗略估算：抓持力 = 3吨自重 × </span><code>K</code><span> (通常在3到30+之间变化)。</span></li><li><span>示例：在良好底质下，高性能锚可能提供 </span><strong><span>440 kN (约44.9吨力)</span></strong><span> 的抓持力；在中等底质下，传统锚可能提供 </span><strong><span>150 kN (约15.3吨力)</span></strong><span>；在恶劣底质下可能只有 </span><strong><span>60 kN (约6.1吨力)</span></strong><span> 或更低。</span></li><li><strong><span>关键点：</span></strong><span> 实际使用时必须施加</span><strong><span>很大的安全系数</span></strong><span>（通常取理论抓持力的1/3到1/5作为安全工作负荷），并</span><strong><span>依赖足够长的锚链/缆来保证水平拉力和缓冲</span></strong><span>。</span></li></ul><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="霍尔锚抓持力系数" class="md-header-anchor"></a><strong><span>霍尔锚抓持力系数</span></strong></h2><p><span>霍尔锚在泥沙底质中的抓持力系数（也称抓力因数）通常取值为 </span><strong><span>7~8</span></strong><span>，具体需结合底质类型、锚链状态及实际工况调整。以下是综合专业资料的详细分析：</span></p><h3><a name="📊-一泥沙底质下的抓持力系数推荐值" class="md-header-anchor"></a><span>📊 一、泥沙底质下的抓持力系数推荐值</span></h3><ol start='' ><li><p><strong><span>标准参考值</span></strong><span>  </span></p><ul><li><strong><span>泥沙混合底质</span></strong><span>（砂泥）：霍尔锚的抓持力系数 </span><strong><span>λₐ ≈ 7~8</span></strong><span>（即抓力可达锚自重的7~8倍）。</span></li><li><strong><span>纯砂底</span></strong><span>：系数略低，约 </span><strong><span>6~7</span></strong><span>；</span><strong><span>软泥底</span></strong><span>则可能提升至 </span><strong><span>9~10</span></strong><span>，但泥沙混合底质以7~8为主。</span></li></ul></li><li><p><strong><span>对比其他底质</span></strong><span>：</span><br/><span>下表为霍尔锚在不同底质中的典型抓持力系数范围：  </span></p><figure><table><thead><tr><th><strong><span>底质类型</span></strong></th><th><strong><span>抓持力系数（λₐ）</span></strong></th><th><strong><span>数据来源</span></strong></th></tr></thead><tbody><tr><td><span>软泥</span></td><td><span>9~10</span></td><td>&nbsp;</td></tr><tr><td><span>硬泥</span></td><td><span>9</span></td><td>&nbsp;</td></tr><tr><td><strong><span>泥沙混合</span></strong></td><td><strong><span>7~8</span></strong></td><td>&nbsp;</td></tr><tr><td><span>砂</span></td><td><span>6~7</span></td><td>&nbsp;</td></tr><tr><td><span>砂砾/贝壳</span></td><td><span>5~6</span></td><td>&nbsp;</td></tr></tbody></table></figure></li></ol><hr /><h3><a name="⚙️-二影响抓持力系数的关键因素" class="md-header-anchor"></a><span>⚙️ 二、影响抓持力系数的关键因素</span></h3><ol start='' ><li><p><strong><span>锚链卧底长度（L₁）</span></strong><span>  </span></p><ul><li><span>锚链平躺海底的部分提供摩擦力，其抓力贡献为 </span><strong><span>W_c · λ_c · L₁</span></strong><span>（λ_c ≈ 1.5~2）。  </span></li><li><span>若出链长度不足（＜5倍水深），锚爪切入角度过小（如＜15°），导致抓力显著下降；理想出链长度需≥6倍水深，使锚爪切入角度达45°。</span></li></ul></li><li><p><strong><span>底质细分差异</span></strong><span>  </span></p><ul><li><strong><span>砂质泥</span></strong><span>（含砂量高）：系数趋近下限 </span><strong><span>7</span></strong><span>；</span><br/><strong><span>泥质砂</span></strong><span>（含泥量高）：系数趋近上限 </span><strong><span>8</span></strong><span>，因黏性土提供更强吸附力。</span></li></ul></li><li><p><strong><span>锚的姿态与设置</span></strong><span>  </span></p><ul><li><span>锚需完全“啮合”底质（即锚爪深埋），否则系数可能降至 </span><strong><span>2.5~4</span></strong><span>（仅依赖自重摩擦）。  </span></li><li><span>水平拉力角度偏差＞5°时，抓力衰减可达30%。</span></li></ul></li></ol><hr /><h3><a name="⚠️-三实际应用注意事项" class="md-header-anchor"></a><span>⚠️ 三、实际应用注意事项</span></h3><ol start='' ><li><p><strong><span>安全系数</span></strong><span></span><br/><span>理论抓持力需除以安全系数（通常 </span><strong><span>3~5</span></strong><span>）作为设计值。例如：  </span></p><ul><li><span>3吨霍尔锚在泥沙底的理论抓力：3t × 7.5 = 22.5吨；  </span></li><li><span>实际允许工作负荷：22.5 ÷ 3 ≈ </span><strong><span>7.5吨</span></strong><span>。</span></li></ul></li><li><p><strong><span>与高性能锚对比</span></strong><span></span><br/><span>霍尔锚抓持力低于现代大抓力锚（如DA-1型在沙底λₐ≈7，淤泥底＞15），适用于常规船舶，非极端海况。</span></p></li></ol><h3><a name="💎-结论" class="md-header-anchor"></a><span>💎 结论</span></h3><ul><li><strong><span>泥沙底质</span></strong><span>下，霍尔锚抓持力系数推荐取 </span><strong><span>7~8</span></strong><span>，需确保锚链卧底长度≥6倍水深且锚爪完全嵌入。  </span></li><li><span>若底质不均（如含砾石），系数应下调至</span><strong><span>6~7</span></strong><span>；重要工程需通过现场试验或数值模拟（如SPH方法）验证。</span></li></ul><p><span>根据工程经验与相关研究，正方体水泥沉块在泥沙底质中的抓持力系数（即抓持力与沉块自重的比值）通常取 </span><strong><span>3～5</span></strong><span> 的范围。具体取值需结合底质特性、沉块埋深、受力方向等关键因素综合确定。以下是详细分析及依据：</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="正方体水泥块抓持力系数取值" class="md-header-anchor"></a><strong><span>正方体水泥块抓持力系数取值</span></strong></h2><h3><a name="📏-一抓持力系数典型取值" class="md-header-anchor"></a><span>📏 </span><strong><span>一、抓持力系数典型取值</span></strong></h3><ol start='' ><li><p><strong><span>基础参考范围</span></strong><span>  </span></p><ul><li><strong><span>泥沙混合底质</span></strong><span>（砂泥比例均衡）：正方体水泥沉块的抓持力系数（λ）一般为 </span><strong><span>3～4</span></strong><span> 。  </span></li><li><strong><span>砂质主导底质</span></strong><span>（含砂量＞60%）：系数略低，约 </span><strong><span>2.5～3.5</span></strong><span>，因砂粒间黏聚力较弱，沉块易滑动。  </span></li><li><strong><span>泥质主导底质</span></strong><span>（含黏土量＞40%）：系数可提升至 </span><strong><span>4～5</span></strong><span>，黏土提供的吸附力增强抗拔性能。</span></li></ul></li><li><p><strong><span>对比其他锚固形式</span></strong><span></span><br/><span>水泥沉块的抓持力显著低于专用锚具（如霍尔锚在泥沙中λ=7～8），因沉块缺乏锚爪嵌入机制，主要依赖自重与底面摩擦。</span></p></li></ol><hr /><h3><a name="⚙️-二影响系数的关键因素" class="md-header-anchor"></a><span>⚙️ </span><strong><span>二、影响系数的关键因素</span></strong></h3><ol start='' ><li><p><strong><span>底质成分与状态</span></strong><span>  </span></p><ul><li><strong><span>砂泥比例</span></strong><span>：含泥量每增加20%，系数约提升0.5～1.0。  </span></li><li><strong><span>含水饱和度</span></strong><span>：饱和泥沙（孔隙水压高）会导致系数下降30～50%；半干湿状态则可能提升至干燥状态的1.5～2倍。  </span></li><li><strong><span>密实度</span></strong><span>：密实泥沙的系数比松散状态高约40%。</span></li></ul></li><li><p><strong><span>沉块设置参数</span></strong><span>  </span></p><ul><li><strong><span>埋深比（H/D）</span></strong><span>：埋深（H）与边长（D）比值越大，系数越高。当H/D≥1时，系数可达4～5；若沉块半裸露（H/D＜0.5），系数降至1.5～2.5。  </span></li><li><strong><span>受力角度</span></strong><span>：水平拉力下系数最大；若存在倾覆力矩（如倾斜受力），系数可能衰减30%以上。</span></li></ul></li><li><p><strong><span>几何形状效应</span></strong><span></span><br/><span>正方体沉块因棱角分明，在嵌入过程中能挤压底质形成局部抗剪区，抓持力比同重量球体高约20%，但低于带锚爪的设计。</span></p></li></ol><hr /><h3><a name="⚠️-三实际应用建议" class="md-header-anchor"></a><span>⚠️ </span><strong><span>三、实际应用建议</span></strong></h3><ol start='' ><li><p><strong><span>设计取值推荐</span></strong><span>  </span></p><figure><table><thead><tr><th><strong><span>工况条件</span></strong></th><th><strong><span>抓持力系数（λ）</span></strong></th><th><strong><span>适用场景</span></strong></th></tr></thead><tbody><tr><td><span>浅埋（H/D＜0.5）</span></td><td><span>1.5～2.5</span></td><td><span>临时固定、低风险环境</span></td></tr><tr><td><span>标准埋深（H/D=0.5～1）</span></td><td><span>3.0～4.0</span></td><td><span>常规防波堤、浮标锚固</span></td></tr><tr><td><span>深埋（H/D＞1）</span></td><td><span>4.0～5.0</span></td><td><span>永久性结构、高荷载需求</span></td></tr><tr><td><strong><span>含黏土量＞40%的密实底质</span></strong></td><td><strong><span>4.5～5.5</span></strong></td><td><span>海床加固、平台基础</span></td></tr></tbody></table></figure></li><li><p><strong><span>安全系数与验证</span></strong><span>  </span></p><ul><li><strong><span>安全裕度</span></strong><span>：理论抓持力需除以安全系数（通常取 </span><strong><span>2～3</span></strong><span>）。例如，10吨沉块在标准工况下理论抓持力为30～40吨，允许工作负荷仅10～15吨。  </span></li><li><strong><span>试验验证</span></strong><span>：重要工程需通过现场拉拔试验或离散元模拟（如PFC3D模型）校准参数。</span></li></ul></li></ol><hr /><h3><a name="💎-四综合结论" class="md-header-anchor"></a><span>💎 </span><strong><span>四、综合结论</span></strong></h3><ul><li><strong><span>泥沙底质</span></strong><span>下，正方体水泥沉块的抓持力系数优先取 </span><strong><span>3.0～4.0</span></strong><span>；若底质泥质含量高且埋深充分，可提升至 </span><strong><span>4.0～5.0</span></strong><span>。  </span></li><li><strong><span>关键控制措施</span></strong><span>：确保埋深≥0.5倍边长、底质密实度＞70%、避免饱和状态施工。  </span></li><li><strong><span>局限性</span></strong><span>：水泥沉块抓持效率远低于专业锚具，适用于辅助固定或低动力环境，若需高抗拔力（如船舶系泊），应选用霍尔锚（λ=7～8）或DA-1型大抓力锚（淤泥中λ＞15）。</span></li></ul><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="大抓力锚" class="md-header-anchor"></a><span>大抓力锚</span></h2><p>&nbsp;</p><h3><a name="🔍-一概念关系与抓持力对比" class="md-header-anchor"></a><span>🔍 一、概念关系与抓持力对比</span></h3><ol start='' ><li><p><strong><span>丹弗尔锚属于大抓力锚的一种</span></strong><span></span><br/><span>大抓力锚是</span><strong><span>类别统称</span></strong><span>，指抓持力至少为同重量普通锚（如霍尔锚）2倍以上的锚型。丹弗尔锚（又称燕尾锚）是其中的经典代表，属于</span><strong><span>有杆大抓力锚</span></strong><span>，其特点是锚头带横杆（稳定杆），锚爪宽长、啮土深。</span><br/><strong><span>抓重比范围</span></strong><span>：丹弗尔锚的抓重比（抓力/自重）通常 </span><strong><span>&gt;10</span></strong><span>，在砂质或硬泥底质中表现优异。</span></p></li><li><p><strong><span>其他大抓力锚的抓持力表现</span></strong><span>  </span></p><ul><li><strong><span>史蒂文锚（Steven Anchor）</span></strong><span>：同为有杆大抓力锚，抓重比可达 </span><strong><span>17–34</span></strong><span>，尤其适用于石油平台定位，是当前抓持力最强的锚型之一。  </span></li><li><strong><span>AC-14型锚</span></strong><span>：无杆大抓力锚代表，抓重比 </span><strong><span>12–14</span></strong><span>，适应多种底质且稳定性好。  </span></li><li><strong><span>波尔锚（Pool Anchor）</span></strong><span>：抓重比仅 </span><strong><span>6左右</span></strong><span>，低于丹弗尔锚。  </span></li></ul><p><strong><span>结论</span></strong><span>：  </span></p><blockquote><p><span>⚖️ </span><strong><span>丹弗尔锚的抓持力（&gt;10）优于部分大抓力锚（如波尔锚），但显著弱于顶级大抓力锚（如史蒂文锚）</span></strong><span>。</span></p></blockquote></li></ol><hr /><h3><a name="🌊-二底质适应性对抓持力的影响" class="md-header-anchor"></a><span>🌊 二、底质适应性对抓持力的影响</span></h3><p><span>抓持力系数并非固定值，而是高度依赖底质类型：</span></p><ul><li><p><strong><span>丹弗尔锚</span></strong><span>：  </span></p><ul><li><strong><span>优势底质</span></strong><span>：砂、硬泥（抓重比＞10）；  </span></li><li><strong><span>劣势底质</span></strong><span>：淤泥（抓力下降明显），因锚爪折角固定（30°），难以深埋软泥。  </span></li></ul></li><li><p><strong><span>其他大抓力锚的适应性改进</span></strong><span>：  </span></p><ul><li><strong><span>斯蒂夫莫特锚（Stevmud）</span></strong><span>：折角50°+超大锚爪面积，专为淤泥设计，抓力显著高于丹弗尔锚；  </span></li><li><strong><span>可调折角锚（如轻量型LWT锚）</span></strong><span>：通过拆卸楔块将折角从30°调至50°，兼顾砂泥与淤泥。</span></li></ul></li></ul><hr /><h3><a name="⚓-三应用场景对比" class="md-header-anchor"></a><span>⚓ 三、应用场景对比</span></h3><figure><table><thead><tr><th><strong><span>锚型</span></strong></th><th><strong><span>抓重比范围</span></strong></th><th><strong><span>适用场景</span></strong></th><th><strong><span>局限性</span></strong></th></tr></thead><tbody><tr><td><strong><span>丹弗尔锚</span></strong></td><td><span>＞10</span></td><td><span>工程船、小型船舶临时定位</span></td><td><span>淤泥中性能差；收藏不便</span></td></tr><tr><td><strong><span>史蒂文锚</span></strong></td><td><span>17–34</span></td><td><span>石油平台、超大型结构永久定位</span></td><td><span>价格高；需专业操作</span></td></tr><tr><td><strong><span>AC-14型锚</span></strong></td><td><span>12–14</span></td><td><span>大型商船首锚、滚装船</span></td><td><span>普通型易“卡锚”，平衡型抓重比略降</span></td></tr><tr><td><strong><span>斯蒂夫莫特锚</span></strong></td><td><span>未明确，淤泥特化</span></td><td><span>淤泥底质工程</span></td><td><span>硬质底质效果一般</span></td></tr></tbody></table></figure><hr /><h3><a name="💎-四综合结论-n343" class="md-header-anchor"></a><span>💎 四、综合结论</span></h3><ol start='' ><li><p><strong><span>抓持力排序</span></strong><span>：</span><br/><strong><span>史蒂文锚（17–34） &gt; AC-14锚（12–14） &gt; 丹弗尔锚（＞10） &gt; 波尔锚（≈6）</span></strong><span>。</span><br/><span>丹弗尔锚属于大抓力锚中的</span><strong><span>中上水平</span></strong><span>，但非最强。</span></p></li><li><p><strong><span>选择建议</span></strong><span>：  </span></p><ul><li><span>若作业以</span><strong><span>砂/硬泥</span></strong><span>为主，丹弗尔锚性价比高，满足常规需求；  </span></li><li><span>若需应对</span><strong><span>淤泥或极端海况</span></strong><span>，应选史蒂文锚或斯蒂夫莫特锚；  </span></li><li><span>对</span><strong><span>收藏便捷性</span></strong><span>要求高时，无杆大抓力锚（如AC-14）更优。</span></li></ul></li><li><p><strong><span>设计优化方向</span></strong><span>：</span><br/><span>丹弗尔锚近年通过增大锚爪面积（如专利CN210083475U）提升抓力约20%，但仍无法突破底质适应性限制。</span></p></li></ol></div>
+</body>
+</html>
