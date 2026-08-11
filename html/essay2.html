@@ -1,347 +1,319 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<title>目录2-杂文</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-/* RESET
-=============================================================================*/
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>杂文</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', 'Noto Serif SC', '楷体', 'KaiTi', system-ui, -apple-system, serif;
+      background: #f9f7f2;
+      background-image: linear-gradient(to bottom, rgba(235, 225, 210, 0.3) 0%, transparent 30%),
+                        radial-gradient(circle at 85% 15%, rgba(180, 160, 130, 0.12) 0%, transparent 40%);
+      color: #3a3228;
+      line-height: 1.8;
+      min-height: 100vh;
+      letter-spacing: 0.3px;
+    }
 
-/* BODY
-=============================================================================*/
+    .essay-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 25px 50px;
+    }
 
-body {
-  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-  text-align: justify;
-  word-wrap: break-word !important;
-}
+    /* 杂文头部：书卷气息，温润色调 */
+    .essay-header {
+      text-align: center;
+      margin: 30px 0 40px;
+      padding: 35px 20px;
+      background: rgba(252, 249, 241, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 40px;
+      border: 1px solid #d4c9b4;
+      box-shadow: 0 15px 30px rgba(100, 80, 50, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
 
-body>*:first-child {
-  margin-top: 0 !important;
-}
+    .essay-header::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path d="M20 30 L50 20 L80 30 L75 65 L50 75 L25 65 Z" fill="%23997b55"/></svg>') no-repeat;
+      background-size: contain;
+      transform: rotate(10deg);
+    }
 
-body>*:last-child {
-  margin-bottom: 0 !important;
-}
+    .essay-header h1 {
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: 12px;
+      color: #5a4a34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+    }
 
-/* BLOCKS
-=============================================================================*/
+    .essay-header h1 i {
+      color: #9b8765;
+      font-size: 2.4rem;
+    }
 
-p, blockquote, ul, ol, dl, table, pre {
-  margin: 15px 0;
-}
+    .subtitle {
+      font-style: italic;
+      color: #7a6e5a;
+      margin-top: 12px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      position: relative;
+    }
 
-/* HEADERS
-=============================================================================*/
+    /* 目录卡片：羊皮纸风格 */
+    .toc-card {
+      background: #fefcf7;
+      border-radius: 32px;
+      padding: 35px 30px;
+      margin: 30px 0 50px;
+      box-shadow: 0 20px 40px rgba(90, 70, 40, 0.07);
+      border: 1px solid #e0d3bd;
+      border-left: 8px solid #b8a07a;
+      transition: box-shadow 0.3s;
+      position: relative;
+    }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: 500;
-  -webkit-font-smoothing: antialiased;
-}
+    .toc-card::after {
+      content: "";
+      position: absolute;
+      bottom: 15px;
+      right: 25px;
+      font-size: 3rem;
+      color: rgba(160, 140, 110, 0.1);
+      font-family: serif;
+      content: "¶";
+    }
 
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-  font-size: inherit;
-}
+    .toc-title {
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: #4a3a24;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Noto Serif SC', '楷体', serif;
+    }
 
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-  color: #000;
-  text-align: center;
-}
+    .toc-title i {
+      color: #9b8765;
+    }
 
-h2 {
-  font-size: 22px;
-  font-weight: 600;
-  border-bottom: 1px solid #ccc;
-  color: #000;
-  text-align: center;
-}
+    /* 目录列表：采用垂直排列，体现杂文的随笔感 */
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
 
-h3 {
-  font-size: 18px;
-}
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #faf6ed;
+      padding: 16px 20px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #3e3525;
+      font-weight: 450;
+      font-size: 1.05rem;
+      transition: all 0.25s ease;
+      border: 1px solid #e4d7bf;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
+      font-family: 'Noto Serif SC', '楷体', serif;
+      letter-spacing: 0.5px;
+    }
 
-h4 {
-  font-size: 16px;
-}
+    .toc-link i {
+      font-size: 1.2rem;
+      color: #b1976e;
+      width: 26px;
+      text-align: center;
+      flex-shrink: 0;
+    }
 
-h5 {
-  font-size: 14px;
-}
+    .toc-link .article-date {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: #9b8b72;
+      font-style: italic;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
 
-h6 {
-  color: #777;
-  font-size: 12px;
-}
+    .toc-link:hover {
+      background: #f1e8d9;
+      border-color: #b8a07a;
+      transform: translateX(8px);
+      box-shadow: 0 10px 20px rgba(130, 100, 60, 0.1);
+      color: #241e12;
+    }
 
-body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
+    .toc-link:hover i {
+      color: #7d623c;
+    }
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0;
-}
+    /* 提示区域 */
+    .note-preview {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 20px 25px;
+      margin: 20px 0 30px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #5a4e3c;
+      border: 1px dashed #cfbea2;
+    }
 
-h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-  margin-top: 10px;
-}
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      color: #5e4e34;
+      text-decoration: none;
+      font-weight: 500;
+      background: #efe6d6;
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
 
-/* LINKS
-=============================================================================*/
+    .back-home:hover {
+      background: #dfd1b8;
+      color: #2e2416;
+    }
 
-a {
-  color: #4183C4;
-  text-decoration: none;
-}
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #8e8068;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* LISTS
-=============================================================================*/
-
-ul, ol {
-  padding-left: 30px;
-}
-
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
-ol li ul:first-of-type {
-  margin-top: 0px;
-}
-
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0;
-}
-
-dl {
-  padding: 0;
-}
-
-dl dt {
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  padding: 0;
-  margin: 15px 0 5px;
-}
-
-dl dt:first-child {
-  padding: 0;
-}
-
-dl dt>:first-child {
-  margin-top: 0px;
-}
-
-dl dt>:last-child {
-  margin-bottom: 0px;
-}
-
-dl dd {
-  margin: 0 0 15px;
-  padding: 0 15px;
-}
-
-dl dd>:first-child {
-  margin-top: 0px;
-}
-
-dl dd>:last-child {
-  margin-bottom: 0px;
-}
-
-/* CODE
-=============================================================================*/
-
-pre, code, tt {
-  font-size: 12px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-}
-
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-}
-
-pre>code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
-}
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
-}
-
-pre code, pre tt {
-  background-color: transparent;
-  border: none;
-}
-
-kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
-    border-style: solid;
-    border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
-}
-
-/* QUOTES
-=============================================================================*/
-
-blockquote {
-  border-left: 4px solid #DDD;
-  padding: 0 15px;
-  color: #777;
-}
-
-blockquote>:first-child {
-  margin-top: 0px;
-}
-
-blockquote>:last-child {
-  margin-bottom: 0px;
-}
-
-/* HORIZONTAL RULES
-=============================================================================*/
-
-hr {
-  clear: both;
-  margin: 15px 0;
-  height: 0px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-bottom: 4px solid #ddd;
-  padding: 0;
-}
-
-/* TABLES
-=============================================================================*/
-
-table th {
-  font-weight: bold;
-}
-
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 6px 13px;
-}
-
-table tr {
-  border-top: 1px solid #ccc;
-  background-color: #fff;
-}
-
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-/* IMAGES
-=============================================================================*/
-
-img {
-  max-width: 100%
-}
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
-
+    @media (max-width: 600px) {
+      .essay-header h1 {
+        font-size: 2.4rem;
+        letter-spacing: 6px;
+      }
+      .toc-link {
+        flex-wrap: wrap;
+        padding: 14px 16px;
+      }
+      .toc-link .article-date {
+        margin-left: 0;
+        width: 100%;
+        text-align: right;
+        font-size: 0.75rem;
+      }
+      .toc-card {
+        padding: 25px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h2>目录2-杂文</h2>
-<p><img src="/images/captain02.jpg">  <font color="silver">| 船长  | 原创 |</font>  <a href="http://www.seal32.cn">个人主页: http://www.seal32.cn</a></p>
-<h3>
-<a href="/html/pirate.html">“长胜”轮海盗劫船杀人案</a><br>
-<a href="/html/zhongdong.html">胡侃中东战争</a><br>
-<a href="/html/2022.html">2022年</a><br>
-<a href="/html/kangyi.html">抗疫记</a><br>
-<a href="/html/lingyi.html">船上灵异事件-1</a><br>
-<a href="/html/lingyi2.html">船上灵异事件-2</a><br>
-<a href="/html/hejiu.html">喝酒杂谈</a><br>
-<a href="/html/warn.html">海上警戒监控</a><br>
-<a href="/html/silitaosheng.html">死里逃生</a><br>
-<a href="/html/nuhaijinghun.html">怒海惊魂</a><br>
-<a href="/html/wuqi.html">聊聊船上的武器</a><br>
-<a href="/html/shixi.html">实习往事</a><br>
-<a href="/html/seaman.html">海员</a><br>
-<a href="/html/sailing.html">航海</a><br>
-<a href="/html/zhongqiu.html">中秋记忆</a><br>
-<a href="/html/fengkong7.html">封控日记-7</a><br>
-<a href="/html/fengkong6.html">封控日记-6</a><br>
-<a href="/html/fengkong5.html">封控日记-5</a><br>
-<a href="/html/fengkong4.html">封控日记-4</a><br>
-<a href="/html/fengkong3.html">封控日记-3</a><br>
-<a href="/html/fengkong2.html">封控日记-2</a><br>
-<a href="/html/fengkong1.html">封控日记-1</a><br>
-<a href="/html/fujing001.html">福景001轮沉没</a><br>
-<a href="/html/gaige.html">聊聊“改革”那些破事</a><br>
-<a href="/html/gaokao.html">我的高考</a><br>
-<a href="/html/xiangcun1.html">乡村往事-晒谷场</a><br>
-<a href="/html/xiangcun2.html">乡村往事-莲塘“鬼影”</a><br>
-<a href="/html/xiongzhou.html">乡村往事-凶咒</a><br>
-<a href="/html/laodongjie.html">五一劳动节有感</a><br>
-<a href="/html/yuandian.html">回到原点</a><br>
-<a href="/html/dizhen.html">日本地震随想</a><br>
-<a href="/html/huozai.html">火灾</a><br>
-<a href="/html/guitu.html">归途</a><br>
-<a href="/html/zhuyuan.html">住院杂记</a><br>
-<a href="/html/yiqing.html">聊聊疫情</a><br>
-<a href="/html/lanqiuchang.html">篮球场</a><br>
-<a href="/html/suixiang.html">随想</a><br>
-<a href="/html/20220502.html">“鲍迪奇”又来了</a><br>
-<a href="/html/20220630.html">分别就是永别</a><br><br>
+  <div class="essay-container">
+    <!-- 杂文头部 -->
+    <header class="essay-header">
+      <h1>
+        <i class="fas fa-feather-alt"></i> 杂文
+      </h1>
+      <p class="subtitle">散墨 · 随笔 · 思绪拾零</p>
+    </header>
 
-</h3>
-<div style="float:left;"><a href="/html/essay1.html">⬅目录1-游记</a></div><div style="float:right;"><a href="/html/essay3.html">➡目录3-科普</a></div>
-<hr><p></hr></p>
+    <!-- 文档目录：杂文列表 -->
+    <div class="toc-card">
+      <div class="toc-title">
+        <i class="fas fa-book-open"></i> 杂文目录
+      </div>
+      <ul class="toc-list" id="essayToc">
+        <!-- JavaScript动态生成目录 -->
+      </ul>
+    </div>
 
+    <!-- 提示区域 -->
+    <div class="note-preview">
+      <i class="fas fa-pen-nib" style="font-size:1.4rem; color:#9b8765;"></i>
+      <span>点击上方任意杂文标题，即可跳转至详细文章页面。</span>
+    </div>
+
+    <a href="https://www.seal32.cn" class="back-home"><i class="fas fa-arrow-left"></i> 返回作品集</a>
+
+    <footer>
+      <span>© 2026 海不扬波 · 杂文集</span> <i class="fas fa-quote-right" style="margin-left:6px;"></i>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // 杂文标题与对应链接映射（可根据需要修改或扩展）
+      const essayItems = [
+        { title: "“长胜”轮海盗劫船杀人案", link: "/html/pirate.html", date: "2026-07-24" },
+        { title: "胡侃中东战争", link: "/html/zhongdong.html", date: "2026-04-29" },
+        { title: "2022年", link: "/html/2022.html", date: "2023-01-01" },
+        { title: "抗疫记", link: "/html/kangyi.html", date: "2022-12-22" },
+        { title: "船上灵异事件-1", link: "/html/lingyi.html", date: "2009-03-14" },
+        { title: "船上灵异事件-2", link: "/html/lingyi2.html", date: "2022-05-06" },
+        { title: "喝酒杂谈", link: "/html/hejiu.html", date: "2009-04-25" },
+        { title: "海上警戒监控", link: "/html/warn.html", date: "2022-04-26" },
+        { title: "死里逃生", link: "/html/silitaosheng.html", date: "2010-01-24" },
+        { title: "怒海惊魂", link: "/html/nuhaijinghun.html", date: "2008-11-26" },
+        { title: "聊聊船上的武器", link: "/html/wuqi.html", date: "2022-05-22" },
+        { title: "实习往事", link: "/html/shixi.html", date: "2022-10-23" }
+      ];
+
+      const tocContainer = document.getElementById('essayToc');
+      if (!tocContainer) return;
+
+      function renderEssayToc() {
+        let htmlString = '';
+        essayItems.forEach((item) => {
+          // 为每个杂文条目设置图标（羽毛笔、书签、墨水等）
+          const icons = ['fa-feather', 'fa-bookmark', 'fa-pen', 'fa-highlighter', 'fa-pencil-alt', 'fa-sticky-note'];
+          const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+          
+          htmlString += `
+            <li>
+              <a href="${item.link}" class="toc-link" target="_blank" rel="noopener noreferrer" title="${item.title}">
+                <i class="fas ${randomIcon}"></i> 
+                ${item.title}
+                <span class="article-date">${item.date}</span>
+              </a>
+            </li>
+          `;
+        });
+        tocContainer.innerHTML = htmlString;
+      }
+
+      renderEssayToc();
+    })();
+  </script>
 </body>
 </html>
-<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
