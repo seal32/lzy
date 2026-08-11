@@ -223,77 +223,110 @@
   </div>
 
 
-  <script>
-    (function() {
-      // 根据提供的目录列表生成游记链接，每个标题对应一个可点击的链接。
-      const travelItems = [
-        { title: "202511北京游记", link: "/html/202511beijing.html" },
-        { title: "2025-2-2澳大利亚皇家国家公园徒步", link: "/html/park.html" },
-        { title: "澳洲塔斯马尼亚游记", link: "/html/tasimaniya.html" },
-        { title: "202409山西-内蒙-河北游记", link: "/html/202409shanxi-neimeng-hebei.html" },
-        { title: "香港半日游", link: "/html/xianggang.html" },
-        { title: "澳门游", link: "/html/aomen.html" },
-        { title: "202311阳朔徒步", link: "/html/202311yangshuotubu.html" },
-        { title: "202311北海-涠洲岛", link: "/html/beihai-weizhoudao.html" },
-        { title: "202309新疆游", link: "/html/xinjiang.html" },
-        { title: "202306阳朔徒步", link: "/html/202306yangshuotubu.html" },
-        { title: "柳州山水", link: "/html/liuzhou.html" },
-        { title: "防城港旅行日记", link: "/html/fangchenggang.html" },
-        { title: "牛木线徒步", link: "/html/niumuxian.html" },
-        { title: "英西峰林徒步", link: "/html/yingxifenglin.html" },
-        { title: "阳朔徒步2", link: "/html/yangshuo2.html" },
-        { title: "江西自由行日记", link: "/html/jiangxi.html" },
-        { title: "陕西-河南自由行日记", link: "/html/shanxihenan.html" },
-        { title: "哈尔滨-雪谷-雪乡游记", link: "/html/heilongjiang.html" },
-        { title: "龙脊梯田游记", link: "/html/longji.html" },
-        { title: "张家界游记", link: "/html/zhangjiajie.html" },
-        { title: "云南-贵阳-柳州游记", link: "/html/yunnan.html" },
-        { title: "西北三省旅行日记", link: "/html/xibei.html" },
-        { title: "鹿寨香桥一日游", link: "/html/xiangqiao.html" },
-        { title: "武汉闲逛", link: "/html/wuhan.html" },
-        { title: "三门江森林公园", link: "/html/sanmenjiang.html" },
-        { title: "蟠龙山", link: "/html/panlongshan.html" },
-        { title: "古亭山", link: "/html/gutingshan.html" },
-        { title: "融水行", link: "/html/rongshui.html" },
-        { title: "梧州白云山", link: "/html/baiyunshan.html" },
-        { title: "桂平西山", link: "/html/xishan.html" },
-        { title: "放鸡岛", link: "/html/fjd.html" },
-        { title: "硇洲岛", link: "/html/nzd.html" },
-        { title: "桂山岛", link: "/html/guishandao.html" },
-        { title: "涠洲岛", link: "/html/weizhoudao.html" },
-        { title: "老人山", link: "/html/lrs.html" }
+<script>
+  (function() {
+    // 建立标题与真实链接的映射表
+    const linkMapping = {
+        "202511北京游记": "/html/202511beijing.html",
+        "2025-2-2澳大利亚皇家国家公园徒步": "/html/park.html",
+        "澳洲塔斯马尼亚游记": "/html/tasimaniya.html",
+        "202409山西-内蒙-河北游记": "/html/202409shanxi-neimeng-hebei.html",
+        "香港半日游": "/html/xianggang.html",
+        "澳门游": "/html/aomen.html",
+        "202311阳朔徒步": "/html/202311yangshuotubu.html",
+        "202311北海-涠洲岛": "/html/beihai-weizhoudao.html",
+        "202309新疆游": "/html/xinjiang.html",
+        "202306阳朔徒步": "/html/202306yangshuotubu.html",
+        "柳州山水": "/html/liuzhou.html",
+        "防城港旅行日记": "/html/fangchenggang.html",
+        "牛木线徒步": "/html/niumuxian.html",
+        "英西峰林徒步": "/html/yingxifenglin.html",
+        "阳朔徒步2": "/html/yangshuo2.html",
+        "江西自由行日记": "/html/jiangxi.html",
+        "陕西-河南自由行日记": "/html/shanxihenan.html",
+        "哈尔滨-雪谷-雪乡游记": "/html/heilongjiang.html",
+        "龙脊梯田游记": "/html/longji.html",
+        "张家界游记": "/html/zhangjiajie.html",
+        "云南-贵阳-柳州游记": "/html/yunnan.html",
+        "西北三省旅行日记": "/html/xibei.html",
+        "鹿寨香桥一日游": "/html/xiangqiao.html",
+        "武汉闲逛": "/html/wuhan.html",
+        "三门江森林公园": "/html/sanmenjiang.html",
+        "蟠龙山": "/html/panlongshan.html",
+        "古亭山": "/html/gutingshan.html",
+        "融水行": "/html/rongshui.html",
+        "梧州白云山": "/html/baiyunshan.html",
+        "桂平西山": "/html/xishan.html",
+        "放鸡岛": "/html/fjd.html",
+        "硇洲岛": "/html/nzd.html",
+        "桂山岛": "/html/guishandao.html",
+        "涠洲岛": "/html/weizhoudao.html",
+        "老人山": "/html/lrs.html"
+    };
 
-      ];
+    const travelItems = [
+        "202511北京游记",
+        "2025-2-2澳大利亚皇家国家公园徒步",
+        "澳洲塔斯马尼亚游记",
+        "202409山西-内蒙-河北游记",
+        "香港半日游",
+        "澳门游",
+        "202311阳朔徒步",
+        "202311北海-涠洲岛",
+        "202309新疆游",
+        "202306阳朔徒步",
+        "柳州山水",
+        "防城港旅行日记",
+        "牛木线徒步",
+        "英西峰林徒步",
+        "阳朔徒步2",
+        "江西自由行日记",
+        "陕西-河南自由行日记",
+        "哈尔滨-雪谷-雪乡游记",
+        "龙脊梯田游记",
+        "张家界游记",
+        "云南-贵阳-柳州游记",
+        "西北三省旅行日记",
+        "鹿寨香桥一日游",
+        "武汉闲逛",
+        "三门江森林公园",
+        "蟠龙山",
+        "古亭山",
+        "融水行",
+        "梧州白云山",
+        "桂平西山",
+        "放鸡岛",
+        "硇洲岛",
+        "桂山岛",
+        "涠洲岛",
+        "老人山"
+    ];
 
-      const tocContainer = document.getElementById('travelToc');
-      if (!tocContainer) return;
+    const tocContainer = document.getElementById('travelToc');
+    if (!tocContainer) return;
 
-      function renderToc() {
-        let htmlString = '';
-        travelItems.forEach((item, index) => {
-          // 为每个条目生成一个示例链接（可替换为实际文章URL）
-          // 使用encodeURIComponent处理中文，便于作为URL参数；也可以直接使用固定链接。
-          const safeName = encodeURIComponent(item);
-          // 示例链接格式：您可以替换为真实的文章页面地址
-          const linkHref = `travel-detail.html?title=${safeName}`; 
-          
-          // 随机分配一个小图标，增加趣味性（与旅行相关）
-          const icons = ['fa-mountain', 'fa-tree', 'fa-water', 'fa-umbrella-beach', 'fa-hiking', 'fa-ship', 'fa-city', 'fa-campground', 'fa-cloud-sun', 'fa-map-pin'];
-          const iconClass = icons[index % icons.length];
-          
-          htmlString += `
-            <li>
-              <a href="${linkHref}" class="toc-link" target="_blank" rel="noopener noreferrer" title="${item}">
-                <i class="fas ${iconClass}"></i> ${item}
-              </a>
-            </li>
-          `;
-        });
-        tocContainer.innerHTML = htmlString;
-      }
+    function renderToc() {
+      let htmlString = '';
+      travelItems.forEach((item, index) => {
+        // 从映射表中获取真实链接，如果没有则使用默认链接
+        const realLink = linkMapping[item] || `travel-detail.html?title=${encodeURIComponent(item)}`;
+        
+        const icons = ['fa-mountain', 'fa-tree', 'fa-water', 'fa-umbrella-beach', 'fa-hiking', 'fa-ship', 'fa-city', 'fa-campground', 'fa-cloud-sun', 'fa-map-pin'];
+        const iconClass = icons[index % icons.length];
+        
+        htmlString += `
+          <li>
+            <a href="${realLink}" class="toc-link" target="_blank" rel="noopener noreferrer" title="${item}">
+              <i class="fas ${iconClass}"></i> ${item}
+            </a>
+          </li>
+        `;
+      });
+      tocContainer.innerHTML = htmlString;
+    }
 
-      renderToc();
-    })();
-  </script>
+    renderToc();
+  })();
+</script>
 </body>
 </html>
