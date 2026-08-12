@@ -1,330 +1,336 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<title>目录3-科普</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-/* RESET
-=============================================================================*/
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>科普</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      background: #f0f5f9;
+      background-image: 
+        linear-gradient(135deg, rgba(30, 129, 176, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 20%, rgba(11, 79, 108, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 30% 80%, rgba(100, 180, 210, 0.07) 0%, transparent 35%);
+      color: #1a3b4b;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-/* BODY
-=============================================================================*/
+    .science-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 20px 25px 50px;
+    }
 
-body {
-  font-family: "SimSun" Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-  text-align: justify;
-  word-wrap: break-word !important;
-}
+    /* 科普头部：理性、现代、海洋科学风格 */
+    .science-header {
+      text-align: center;
+      margin: 30px 0 40px;
+      padding: 35px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 36px;
+      border: 1px solid rgba(30, 129, 176, 0.25);
+      box-shadow: 0 15px 35px rgba(0, 80, 120, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
 
-body>*:first-child {
-  margin-top: 0 !important;
-}
+    .science-header::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 150px;
+      height: 150px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><circle cx="50" cy="50" r="40" fill="none" stroke="%231e81b0" stroke-width="2"/><circle cx="50" cy="50" r="25" fill="none" stroke="%231e81b0" stroke-width="1.5"/><circle cx="50" cy="50" r="10" fill="%231e81b0"/><line x1="50" y1="10" x2="50" y2="0" stroke="%231e81b0" stroke-width="2"/><line x1="90" y1="50" x2="100" y2="50" stroke="%231e81b0" stroke-width="2"/></svg>') no-repeat;
+      background-size: contain;
+    }
 
-body>*:last-child {
-  margin-bottom: 0 !important;
-}
+    .science-header h1 {
+      font-size: 3rem;
+      font-weight: 350;
+      letter-spacing: 10px;
+      color: #0b4f6c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+    }
 
-/* BLOCKS
-=============================================================================*/
+    .science-header h1 i {
+      color: #1e81b0;
+      font-size: 2.3rem;
+    }
 
-p, blockquote, ul, ol, dl, table, pre {
-  margin: 15px 0;
-}
+    .subtitle {
+      color: #3b6e85;
+      margin-top: 12px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      font-weight: 400;
+      position: relative;
+    }
 
-/* HEADERS
-=============================================================================*/
+    /* 目录卡片：科技感玻璃效果 */
+    .toc-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 32px;
+      padding: 35px 30px;
+      margin: 30px 0 50px;
+      box-shadow: 0 20px 40px rgba(0, 70, 100, 0.08);
+      border: 1px solid rgba(30, 129, 176, 0.2);
+      border-left: 8px solid #1e81b0;
+    }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: 500;
-  -webkit-font-smoothing: antialiased;
-}
+    .toc-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #0a4052;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-  font-size: inherit;
-}
+    .toc-title i {
+      color: #1e81b0;
+    }
 
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-  color: #000;
-  text-align: center;
-}
+    /* 目录网格：卡片式布局 */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      list-style: none;
+    }
 
-h2 {
-  font-size: 22px;
-  font-weight: 600;
-  border-bottom: 1px solid #ccc;
-  color: #000;
-  text-align: center;
-}
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      padding: 16px 20px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #1a4b5e;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(30, 129, 176, 0.18);
+      box-shadow: 0 4px 12px rgba(0, 100, 140, 0.04);
+      letter-spacing: 0.3px;
+    }
 
-h3 {
-  font-size: 18px;
-}
+    .toc-link i {
+      font-size: 1.3rem;
+      color: #1e81b0;
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
 
-h4 {
-  font-size: 16px;
-}
+    .toc-link .category-tag {
+      margin-left: auto;
+      font-size: 0.7rem;
+      background: rgba(30, 129, 176, 0.12);
+      color: #0f5b78;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
 
-h5 {
-  font-size: 14px;
-}
+    .toc-link:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #1e81b0;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 25px rgba(0, 110, 150, 0.12);
+      color: #072a36;
+    }
 
-h6 {
-  color: #777;
-  font-size: 12px;
-}
+    .toc-link:hover i {
+      color: #0a5f7c;
+    }
 
-body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
+    /* 提示区域 */
+    .info-banner {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 20px 25px;
+      margin: 20px 0 30px;
+      box-shadow: 0 8px 18px rgba(0, 70, 100, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #2b6176;
+      border: 1px solid rgba(30, 129, 176, 0.15);
+    }
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0;
-}
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      color: #1d5b77;
+      text-decoration: none;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: 0.2s;
+      border: 1px solid rgba(30, 129, 176, 0.2);
+    }
 
-h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-  margin-top: 10px;
-}
+    .back-home:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #1e81b0;
+      color: #083c4f;
+    }
 
-/* LINKS
-=============================================================================*/
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #4b7a8e;
+      font-size: 0.9rem;
+    }
 
-a {
-  color: #4183C4;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* LISTS
-=============================================================================*/
-
-ul, ol {
-  padding-left: 30px;
-}
-
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
-ol li ul:first-of-type {
-  margin-top: 0px;
-}
-
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0;
-}
-
-dl {
-  padding: 0;
-}
-
-dl dt {
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  padding: 0;
-  margin: 15px 0 5px;
-}
-
-dl dt:first-child {
-  padding: 0;
-}
-
-dl dt>:first-child {
-  margin-top: 0px;
-}
-
-dl dt>:last-child {
-  margin-bottom: 0px;
-}
-
-dl dd {
-  margin: 0 0 15px;
-  padding: 0 15px;
-}
-
-dl dd>:first-child {
-  margin-top: 0px;
-}
-
-dl dd>:last-child {
-  margin-bottom: 0px;
-}
-
-/* CODE
-=============================================================================*/
-
-pre, code, tt {
-  font-size: 12px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-}
-
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-}
-
-pre>code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
-}
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
-}
-
-pre code, pre tt {
-  background-color: transparent;
-  border: none;
-}
-
-kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
-    border-style: solid;
-    border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
-}
-
-/* QUOTES
-=============================================================================*/
-
-blockquote {
-  border-left: 4px solid #DDD;
-  padding: 0 15px;
-  color: #777;
-}
-
-blockquote>:first-child {
-  margin-top: 0px;
-}
-
-blockquote>:last-child {
-  margin-bottom: 0px;
-}
-
-/* HORIZONTAL RULES
-=============================================================================*/
-
-hr {
-  clear: both;
-  margin: 15px 0;
-  height: 0px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-bottom: 4px solid #ddd;
-  padding: 0;
-}
-
-/* TABLES
-=============================================================================*/
-
-table th {
-  font-weight: bold;
-}
-
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 6px 13px;
-}
-
-table tr {
-  border-top: 1px solid #ccc;
-  background-color: #fff;
-}
-
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-/* IMAGES
-=============================================================================*/
-
-img {
-  max-width: 100%
-}
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
-
+    @media (max-width: 600px) {
+      .science-header h1 {
+        font-size: 2.3rem;
+        letter-spacing: 6px;
+      }
+      .toc-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .toc-link {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+      .toc-card {
+        padding: 25px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h2>目录3-科普</h2>
-<p><img src="/images/captain02.jpg">  <font color="silver">| 船长  | 原创 |</font>  <a href="http://www.seal32.cn">个人主页: http://www.seal32.cn</a></p>
-<h3>
-<a href="/html/map.html">户外地图软件</a><br>
-<a href="/html/ruanjian.html">推荐几个实用软件</a><br>
-<a href="/html/shouji-hifi.html">废物利用-玩转手机HIFI</a><br>
-<a href="/html/hangbiaozuoye.html">航标作业</a><br>
-<a href="/html/buoy.html">科普知识—航标</a><br>
-<a href="/html/position.html">科普知识—船舶定位</a><br>
-<a href="/html/taifeng.html">科普知识—台风</a><br>
-<a href="/html/dgps.html">DGPS在浮标定位中的应用</a><br>
-<a href="/html/radar.html">航海雷达简介</a><br>
-<a href="/html/yangliu.html">从洋流看日本排放核废水的影响</a><br>
-<a href="/html/hanchao.html">气象小知识-寒潮</a><br>
-<a href="/html/tvbox.html">观影看剧神器—TVBox</a><br>
-<a href="/html/wangzhandajian.html">如何搭建个人网站</a><br>
-<a href="/html/iptv.html">如何自建电视直播频道</a><br>
-<a href="/html/sacd.html">用电脑播放SACD镜像文件的方法</a><br>
-<a href="/html/yinxiang.html">音响</a><br>
-<a href="/html/git.html">GIT使用摘要备忘</a><br>
-<a href="/html/MarkdownPad.html">MarkdownPad用法备忘</a><br>
-<a href="/html/html code.html">HTML常用代码备忘</a><br>
-<a href="/html/fenglangbiao.html">参考资料-风浪等级表</a><br>
-<a href="/html/Anchor Holding Power.html">锚系-沉块抓持力计算</a><br><br>
+  <div class="science-container">
+    <!-- 科普头部 -->
+    <header class="science-header">
+      <h1>
+        <i class="fas fa-flask"></i> 科普
+      </h1>
+      <p class="subtitle">探索 · 学习 · 航海 · 自然</p>
+    </header>
 
+    <!-- 科普文章目录 -->
+    <div class="toc-card">
+      <div class="toc-title">
+        <i class="fas fa-microscope"></i> 科普目录
+      </div>
+      <ul class="toc-grid" id="scienceToc">
+        <!-- JavaScript动态生成目录 -->
+      </ul>
+    </div>
 
-</h3>
-<div style="float:left;"><a href="/html/essay2.html">⬅目录2-杂文</a></div>
-<hr><p></hr></p>
+    <!-- 提示区域 -->
+    <div class="info-banner">
+      <i class="fas fa-lightbulb" style="font-size:1.5rem; color:#1e81b0;"></i>
+      <span>点击上方科普标题，即可跳转至文章页面。</span>
+    </div>
 
+    <a href="https://www.seal32.cn" class="back-home"><i class="fas fa-arrow-left"></i> 返回作品集</a>
+
+    <footer>
+      <span>© 2026 海不扬波 · 科普集</span> <i class="fas fa-atom" style="margin-left:8px;"></i>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // 科普文章数据：标题、链接、分类标签
+      const scienceItems = [
+        { title: "从洋流看日本排放核废水的影响", link: "/html/yangliu.html", category: "海洋" },
+        { title: "船舶定位", link: "/html/position.html", category: "船舶" },
+        { title: "航标作业", link: "/html/hangbiaozuoye.html", category: "船舶" },
+        { title: "航标", link: "/html/buoy.html", category: "船舶" },
+        { title: "航海雷达简介", link: "/html/radar.html", category: "船舶" },
+        { title: "DGPS在浮标定位中的应用", link: "/html/dgps.html", category: "船舶" },
+        { title: "参考资料-锚系、沉块抓持力计算", link: "/html/Anchor Holding Power.html", category: "船舶" },
+        { title: "台风", link: "/html/taifeng.html", category: "气象" },
+        { title: "寒潮", link: "/html/hanchao.html", category: "气象" },
+        { title: "参考资料-风浪等级表", link: "/html/fenglangbiao.html", category: "气象" },
+        { title: "户外地图软件", link: "/html/map.html", category: "科技" },
+        { title: "推荐几个实用软件", link: "/html/ruanjian.html", category: "科技" },
+        { title: "音响", link: "/html/yinxiang.html", category: "科技" },
+        { title: "用电脑播放SACD镜像文件的方法", link: "/html/sacd.html", category: "科技" },
+        { title: "废物利用-玩转手机HIFI", link: "/html/shouji-hifi.html", category: "科技" },
+        { title: "自建电视直播频道", link: "/html/iptv.html", category: "科技" },
+        { title: "观影看剧神器—TVBox", link: "/html/tvbox.html", category: "科技" },
+        { title: "如何搭建个人网站", link: "/html/wangzhandajian.html", category: "科技" },
+        { title: "GIT使用摘要备忘", link: "/html/git.html", category: "" },
+        { title: "MarkdownPad用法备忘", link: "/html/MarkdownPad.html", category: "" },
+        { title: "HTML常用代码备忘", link: "/html/html code.html", category: "" }
+
+      //注意：目录列表最后一项 } 后不加 , 号。
+
+      ];
+
+      const tocContainer = document.getElementById('scienceToc');
+      if (!tocContainer) return;
+
+      function renderScienceToc() {
+        let htmlString = '';
+        scienceItems.forEach((item) => {
+          // 根据分类分配不同图标
+          const categoryIcons = {
+            '海洋': 'fa-water',
+            '船舶': 'fa-ship',
+            '天文': 'fa-moon',
+            '生态': 'fa-leaf',
+            '气象': 'fa-cloud-sun-rain',
+            '生物': 'fa-fish',
+            '科技': 'fa-satellite',
+            '地质': 'fa-mountain',
+            '材料': 'fa-flask',
+            '气候': 'fa-temperature-high',
+            '环保': 'fa-recycle',
+            '物理': 'fa-lightbulb'
+          };
+          const iconClass = categoryIcons[item.category] || 'fa-microscope';
+          
+          htmlString += `
+            <li>
+              <a href="${item.link}" class="toc-link" target="_blank" rel="noopener noreferrer" title="${item.title}">
+                <i class="fas ${iconClass}"></i> 
+                ${item.title}
+                <span class="category-tag">${item.category}</span>
+              </a>
+            </li>
+          `;
+        });
+        tocContainer.innerHTML = htmlString;
+      }
+
+      renderScienceToc();
+    })();
+  </script>
 </body>
 </html>
-<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

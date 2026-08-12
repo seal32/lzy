@@ -212,7 +212,7 @@
     <!-- 提示区域 -->
     <div class="article-preview">
       <i class="fas fa-info-circle" style="font-size:1.4rem; color:#b68b5c;"></i>
-      <span>点击上方任意游记标题，即可跳转至详细文章页面。</span>
+      <span>点击上方游记标题，即可跳转至文章页面。</span>
     </div>
 
     <a href="https://www.seal32.cn" class="back-home"><i class="fas fa-arrow-left"></i> 返回作品集</a>
@@ -262,6 +262,8 @@
         "桂山岛": "/html/guishandao.html",
         "涠洲岛": "/html/weizhoudao.html",
         "老人山": "/html/lrs.html"
+
+      //注意：目录列表最后一项 " 后不加 , 号。
     };
 
     const travelItems = [
@@ -300,6 +302,9 @@
         "桂山岛",
         "涠洲岛",
         "老人山"
+
+      //注意：目录列表最后一项 " 后不加 , 号。
+
     ];
 
     const tocContainer = document.getElementById('travelToc');
@@ -311,7 +316,7 @@
         // 从映射表中获取真实链接，如果没有则使用默认链接
         const realLink = linkMapping[item] || `travel-detail.html?title=${encodeURIComponent(item)}`;
         
-        const icons = ['fa-mountain', 'fa-tree', 'fa-water', 'fa-umbrella-beach', 'fa-hiking', 'fa-ship', 'fa-city', 'fa-campground', 'fa-cloud-sun', 'fa-map-pin'];
+        const icons = ['fa-mountain', 'fa-tree', 'fa-umbrella-beach', 'fa-hiking', 'fa-campground', 'fa-cloud-sun', 'fa-map-pin'];
         const iconClass = icons[index % icons.length];
         
         htmlString += `
