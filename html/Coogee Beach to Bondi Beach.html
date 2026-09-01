@@ -267,20 +267,20 @@
       </svg>
       <span class="font-display text-lg font-semibold tracking-wide" style="color:var(--ink)">Wanderlust<span style="color:var(--terracotta)">.</span></span>
     </div>
-    <div class="hidden md:flex items-center gap-6 text-sm" style="color:var(--ink-soft)">
-      <a href="https://www.seal32.cn" class="hover:text-[color:var(--terracotta)] transition">首页</a>
-      <a href="/html/essay1.html" class="hover:text-[color:var(--terracotta)] transition">目录</a>
+    <div class="flex items-center gap-4 md:gap-6 text-xs md:text-sm" style="color:var(--ink-soft)">
+      <a href="https://www.seal32.cn" class="hover:text-[color:var(--terracotta)] transition whitespace-nowrap">首页</a>
+      <a href="/html/essay1.html" class="hover:text-[color:var(--terracotta)] transition whitespace-nowrap">目录</a>
     </div>
-    <div class="stamp">POSTCARD · 2026</div>
+    <div class="stamp hidden sm:inline-flex">POSTCARD · 2026</div>
   </nav>
 </header>
 
 <!-- Hero 首屏 -->
 <section class="relative z-10 max-w-6xl mx-auto px-5 md:px-8">
-  <div class="relative max-w-3xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl" style="height:320px;">
-    <img src="/images/2026-au/01.jpg" alt="海岸美景" class="w-full h-full object-cover"/>
+  <div class="relative max-w-3xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl min-h-[420px] md:min-h-[500px]">
+    <img src="/images/2026-au/01.jpg" alt="海岸美景" class="absolute inset-0 w-full h-full object-cover"/>
     <div class="absolute inset-0 hero-overlay"></div>
-    <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-10 text-white">
+    <div class="relative z-10 flex flex-col justify-end h-full min-h-[420px] md:min-h-[500px] p-5 sm:p-6 md:p-10 text-white">
       <div class="flex flex-wrap items-center gap-2 mb-3">
         <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
@@ -292,7 +292,7 @@
         </span>
         <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">1 天</span>
       </div>
-      <h1 class="font-serif-cn text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3">
+      <h1 class="font-serif-cn text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3">
         Coogee Beach→Bondi Beach海岸徒步
       </h1>
       <p class="text-white/85 text-sm md:text-base max-w-2xl">
