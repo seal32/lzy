@@ -253,13 +253,6 @@
     font-size:12px;letter-spacing:.1em;border-radius:6px;
     transform:rotate(-3deg);opacity:.7;
   }
-
-  /* 入场动画 */
-  @keyframes rise{from{opacity:.92;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-  .rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;}
-  .rise-d1{animation-delay:.1s;}
-  .rise-d2{animation-delay:.2s;}
-  .rise-d3{animation-delay:.3s;}
 </style>
 </head>
 <body class="paper-bg grain" id="top">
@@ -284,7 +277,7 @@
 
 <!-- Hero 首屏 -->
 <section class="relative z-10 max-w-6xl mx-auto px-5 md:px-8">
-  <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl rise" style="height:320px;">
+  <div class="relative max-w-3xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl" style="height:320px;">
     <img src="/images/2026-au/01.jpg" alt="海岸美景" class="w-full h-full object-cover"/>
     <div class="absolute inset-0 hero-overlay"></div>
     <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-10 text-white">
@@ -299,13 +292,13 @@
         </span>
         <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">1 天</span>
       </div>
-      <h1 class="font-serif-cn text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 rise rise-d1">
+      <h1 class="font-serif-cn text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3">
         Coogee Beach→Bondi Beach海岸徒步
       </h1>
-      <p class="text-white/85 text-sm md:text-base max-w-2xl rise rise-d2">
+      <p class="text-white/85 text-sm md:text-base max-w-2xl">
         在悉尼东海岸的蓝天与碧海之间，我把脚步放慢，把时间还给海风。
       </p>
-      <div class="flex items-center gap-3 mt-4 rise rise-d3">
+      <div class="flex items-center gap-3 mt-4">
         <div class="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm font-semibold">海</div>
         <div class="text-sm">
           <div class="font-medium">海不扬波</div>
@@ -341,8 +334,7 @@
       <h2 id="ch1">一、徒步起点--Coogee Beach</h2>
       <p class="drop-cap">从住所出发走路11分钟到 Wolli Creek 火车站，乘坐SCO线火车到Bondi Junction火车站。双层火车，人不算很多，不过蜗牛一样的速度比起我们国内的地铁差远了。30分钟后到达Bondi Junction站，出站到地面层就是公共汽车站，很多路汽车开往悉尼各地，乘坐350路公交车到 Coogee Beach ，开得很快，13分钟后到达目的地。需要注意的是：公交车上、下车都要刷卡，下车到站前要提前按铃，否则司机看到车站没人招手上车时可能不会停站。用华为鸿蒙系统手机的在国外可以用花瓣地图查看乘车及导航信息，不过没有安卓手机的谷歌地图app乘车信息详细、好用。</p>
       <p>Coogee Beach 是悉尼其中一个比较有名的沙滩，设施齐全，周围环境不错，沙滩很干净，海湾口向东正对南太平洋，涌浪较大，适合冲浪。此时正是悉尼冬、春交替季节，比较凉，下海游泳的人不多。</p>
-       <p>转到 Ben′s Rock，一块独立在岬角的大石头，在此处可看到库吉沙滩全景。</p>
-
+      <p>转到 Ben′s Rock，一块独立在岬角的大石头，在此处可看到库吉沙滩全景。</p>
       <!-- 居中图片1 -->
       <figure class="my-10 max-w-[680px] mx-auto">
         <div class="photo-card" onclick="openLightbox(this)">
@@ -476,27 +468,31 @@
 
       <h2 id="ch5">五、Bondi Beach 邦迪海滩</h2>
       <p>一直走到邦迪海滩。这是世界著名的冲浪、休闲度假海滩。海滩南侧有个“Bondi Icebergs”海边游泳池，很有名。</p>
+
       <!-- 居中图片10 -->
       <figure class="my-10 max-w-[680px] mx-auto">
         <div class="photo-card" onclick="openLightbox(this)">
-          <img src="/images/2026-au/13.jpg" alt="Bondi Beach" data-caption="世界著名海滩"/>
+          <img src="/images/2026-au/13.jpg" alt="Bondi Beach" data-caption="邦迪海滩"/>
           <div class="zoom-hint">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
           </div>
-          <div class="photo-caption">世界著名海滩</div>
+          <div class="photo-caption">邦迪海滩</div>
         </div>
       </figure>
+
       <!-- 居中图片11 -->
       <figure class="my-10 max-w-[680px] mx-auto">
         <div class="photo-card" onclick="openLightbox(this)">
-          <img src="/images/2026-au/14.jpg" alt="Bondi Beach" data-caption="世界著名海滩"/>
+          <img src="/images/2026-au/14.jpg" alt="Bondi Beach" data-caption="邦迪海滩"/>
           <div class="zoom-hint">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
           </div>
-          <div class="photo-caption">世界著名海滩</div>
+          <div class="photo-caption">邦迪海滩</div>
         </div>
       </figure>
+
       <p>这个海滩曾经发生过一件轰动世界的事件：2025年12月14日，当地哈巴德犹太教会在该海滩儿童游乐场附近举办光明节庆祝活动，受极端主义思想影响的父子两人，从一个行人天桥上用长管枪械向着不足百米外的公园人群连续射击，造成16人死亡，43人受伤。就是在这个桥。↓</p>
+
       <!-- 居中图片12 -->
       <figure class="my-10 max-w-[680px] mx-auto">
         <div class="photo-card" onclick="openLightbox(this)">
@@ -504,15 +500,15 @@
           <div class="zoom-hint">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
           </div>
-          <div class="photo-caption">枪击事件 . 行人桥</div>
+          <div class="photo-caption">枪击事件 . 行人天桥</div>
         </div>
       </figure>
 
       <blockquote>
-        旅行的意义从来不是走了多远，而是在某一刻，你忽然重新找到了人生的方向。
+        旅行的意义从来不是走了多远，而是在某一刻，你忽然重新找回了自己。
       </blockquote>
 
-      <p>此次轻松惬意的外国徒步之旅到此结束。生命不息，探索不止……</p>
+      <p>此次轻松惬意的外国徒步之旅到此结束，在附近坐333路公共汽车到 Bondi Junction 火车站，再坐T4火车回 Wolli Creek 。生命不息，探索不止……</p>
 
       <!-- 标签区 -->
       <div class="flex flex-wrap gap-2 mt-10 pt-6 border-t" style="border-color:rgba(43,36,32,0.08)">
@@ -528,7 +524,7 @@
       <div class="info-card p-5 md:p-6 mt-10">
         <div class="flex items-center gap-2 mb-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a8c" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg>
-          <h3 class="!m-0" style="color:var(--ink)">徒步路线</h3>
+          <h3 class="!m-0" style="color:var(--ink)">路线示意图（非徒步轨迹）</h3>
         </div>
         <div id="travel-map"></div>
         <p class="text-xs mt-2 !mb-0" style="color:var(--ink-soft)">Coogee Beach → Gordons Bay → Clovelly Beach→ Bronte Beach→Tamarama Beah→Bondi Beach · 约 9 公里</p>
@@ -600,4 +596,4 @@
 </script>
 </body>
 </html>
-<!--35530325222573747210083016--><!--25132557492395614730083117--><!--25325467852573747210083117--><!--25389987002395614730083117--><!--25615770542573747210083117--><!--25707880652573747210083117--><!--25862676392573747210083117-->
+<!--35530325222573747210083016--><!--25132557492395614730083117--><!--25325467852573747210083117--><!--25389987002395614730083117--><!--25615770542573747210083117--><!--25707880652573747210083117--><!--05521863782573747210090117--><!--05608843992573747210090117--><!--05704612132395614730090117-->
