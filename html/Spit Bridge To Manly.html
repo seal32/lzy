@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>斯皮特大桥→曼利徒步</title>
+<script src="https://aisearch-task.bj.bcebos.com/static/tailwindcss-3.4.17.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --sand: #f5efe4;
+    --cream: #fdf8ef;
+    --terracotta: #c86b3c;
+    --terracotta-rgb: 200,107,60;
+    --ocean: #4a7a8c;
+    --gold: #d4a853;
+    --ink: #2b2420;
+    --ink-soft: #5c4f46;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: 'PingFang SC','HarmonyOS Sans SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .font-serif-cn{font-family:'Songti SC','STSong','SimSun',Georgia,'Times New Roman',serif;}
+  .font-display{font-family:Georgia,'Times New Roman','Songti SC',serif;}
+
+  /* 背景纹理：米白奶油 + 纸张颗粒 */
+  .paper-bg{
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(212,168,83,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 20%, rgba(200,107,60,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(74,122,140,0.07) 0%, transparent 60%);
+  }
+  .grain::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  /* 首屏渐变遮罩 */
+  .hero-overlay{
+    background: linear-gradient(180deg, rgba(43,36,32,0.15) 0%, rgba(43,36,32,0.35) 55%, rgba(43,36,32,0.75) 100%);
+  }
+  .sunset-gradient{
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #c86b3c 100%);
+  }
+
+  /* 首字下沉 */
+  .drop-cap::first-letter{
+    font-family: Georgia,'Times New Roman','Songti SC',serif;
+    float:left;
+    font-size: 4.2rem;
+    line-height: 0.9;
+    padding: 0.35rem 0.6rem 0 0;
+    color: var(--terracotta);
+    font-weight: 700;
+  }
+
+  /* 正文阅读排版 */
+  .prose-article p{
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    text-align: justify;
+  }
+  @media(min-width:768px){
+    .prose-article p{font-size:17px; line-height:1.9;}
+  }
+  .prose-article h2{
+    font-family:'Songti SC','STSong',serif;
+    font-size: 1.55rem;
+    font-weight:700;
+    color: var(--ink);
+    margin: 2.6rem 0 1rem;
+    padding-left: 0.9rem;
+    border-left: 4px solid var(--terracotta);
+    letter-spacing: 0.02em;
+  }
+  .prose-article h3{
+    font-size: 1.15rem;
+    font-weight:600;
+    color: var(--terracotta);
+    margin: 1.8rem 0 0.6rem;
+  }
+  .prose-article blockquote{
+    border-left: 3px solid var(--gold);
+    background: rgba(212,168,83,0.08);
+    padding: 1rem 1.25rem;
+    margin: 1.6rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* 可点击图片卡片 */
+  .photo-card{
+    position:relative;cursor:zoom-in;overflow:hidden;border-radius:14px;
+    box-shadow: 0 10px 30px -12px rgba(43,36,32,0.25), 0 4px 10px -4px rgba(43,36,32,0.12);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    background:#eee;
+  }
+  .photo-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -14px rgba(43,36,32,0.35), 0 6px 14px -4px rgba(43,36,32,0.15);
+  }
+  .photo-card img{display:block;width:100%;height:auto;transition: transform .6s ease;}
+  .photo-card:hover img{transform:scale(1.04);}
+  .photo-card .photo-caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding: 2rem 1rem 0.8rem;
+    background: linear-gradient(0deg,rgba(43,36,32,0.75) 0%, transparent 100%);
+    color:#fff;
+    font-size: 13px;
+    letter-spacing:.02em;
+  }
+  .photo-card .zoom-hint{
+    position:absolute;top:12px;right:12px;
+    width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);opacity:0;transition:opacity .3s;
+  }
+  .photo-card:hover .zoom-hint{opacity:1;}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(20,16,14,0.92);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+    backdrop-filter: blur(6px);
+  }
+  .lightbox.active{display:flex;animation:fadeIn .3s ease;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .lightbox img{
+    max-width:96vw;max-height:90vh;
+    border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,0.5);
+    object-fit:contain;
+  }
+  .lightbox-close{
+    position:absolute;top:20px;right:24px;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+    color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:22px;transition: background .2s;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.25);}
+  .lightbox-caption{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    color:rgba(255,255,255,0.85);font-size:14px;text-align:center;max-width:90vw;
+  }
+
+  /* 标签 */
+  .tag{
+    display:inline-flex;align-items:center;gap:4px;
+    padding: 4px 12px;border-radius:999px;
+    font-size: 12px; font-weight:500;
+    background: rgba(var(--terracotta-rgb),0.1);
+    color: var(--terracotta);
+    border:1px solid rgba(var(--terracotta-rgb),0.18);
+  }
+
+  /* 信息卡片 */
+  .info-card{
+    background: #fff;
+    border-radius: 16px;
+    border:1px solid rgba(43,36,32,0.06);
+    box-shadow: 0 4px 20px -8px rgba(43,36,32,0.12);
+  }
+
+  /* 时间轴 */
+  .timeline{position:relative;padding-left:1.8rem;}
+  .timeline::before{
+    content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+    background: linear-gradient(180deg,var(--terracotta),var(--gold) 50%,var(--ocean));
+    border-radius:2px;
+  }
+  .timeline-item{position:relative;margin-bottom:1.4rem;}
+  .timeline-item::before{
+    content:"";position:absolute;left:-1.8rem;top:6px;
+    width:16px;height:16px;border-radius:50%;
+    background:#fff;border:3px solid var(--terracotta);
+    box-shadow:0 0 0 4px var(--cream);
+  }
+
+  /* 分隔装饰 */
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    color:var(--gold);margin:2.5rem 0;
+  }
+  .ornament::before,.ornament::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    max-width:120px;
+  }
+
+  /* 回到目录按钮 */
+  .back-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding: 12px 26px;border-radius:999px;
+    background: var(--terracotta);color:#fff;
+    font-weight:500;
+    box-shadow: 0 6px 20px -6px rgba(200,107,60,0.55);
+    transition: all .3s ease;
+    text-decoration:none;
+  }
+  .back-btn:hover{
+    background:#b05c30;transform:translateY(-2px);
+    box-shadow: 0 10px 24px -6px rgba(200,107,60,0.65);
+  }
+
+  /* 顶部目录（锚点导航） */
+  .toc-float{
+    position:sticky;top:20px;
+  }
+  .toc-link{
+    display:block;padding:6px 10px;border-radius:8px;
+    font-size:13px;color:var(--ink-soft);
+    border-left:2px solid transparent;
+    transition:all .2s;
+  }
+  .toc-link:hover{color:var(--terracotta);background:rgba(var(--terracotta-rgb),0.05);}
+  .toc-link.active{color:var(--terracotta);border-left-color:var(--terracotta);background:rgba(var(--terracotta-rgb),0.08);font-weight:500;}
+
+  /* 地图 */
+  #travel-map{height:280px;border-radius:12px;z-index:2;}
+
+  /* 小指南针装饰 */
+  .compass{
+    width:70px;height:70px;border-radius:50%;
+    background:#fff;border:2px solid var(--terracotta);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;box-shadow:0 4px 12px rgba(200,107,60,0.2);
+  }
+  .compass-needle{
+    width:4px;height:36px;background:linear-gradient(180deg,var(--terracotta) 50%,var(--ink-soft) 50%);
+    border-radius:2px;position:absolute;
+    animation: spin 12s linear infinite;
+    transform-origin:center;
+  }
+  @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+  /* 邮票/印章装饰 */
+  .stamp{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 14px;border:2px dashed var(--terracotta);
+    color:var(--terracotta);font-family:Georgia,serif;
+    font-size:12px;letter-spacing:.1em;border-radius:6px;
+    transform:rotate(-3deg);opacity:.7;
+  }
+</style>
+</head>
+<body class="paper-bg grain" id="top">
+
+<!-- 顶部导航 -->
+<header class="relative z-10">
+  <nav class="max-w-6xl mx-auto px-5 md:px-8 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="shrink-0">
+        <path d="M3 18 L12 4 L21 18 Z" stroke="#c86b3c" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+        <circle cx="12" cy="13" r="2" fill="#d4a853"/>
+      </svg>
+      <span class="font-display text-lg font-semibold tracking-wide" style="color:var(--ink)">Wanderlust<span style="color:var(--terracotta)">.</span></span>
+    </div>
+    <div class="flex items-center gap-4 md:gap-6 text-xs md:text-sm" style="color:var(--ink-soft)">
+      <a href="https://www.seal32.cn" class="hover:text-[color:var(--terracotta)] transition whitespace-nowrap">首页</a>
+      <a href="/html/essay1.html" class="hover:text-[color:var(--terracotta)] transition whitespace-nowrap">目录</a>
+    </div>
+    <div class="stamp hidden sm:inline-flex">POSTCARD · 2026</div>
+  </nav>
+</header>
+
+<!-- Hero 首屏 -->
+<section class="relative z-10 max-w-6xl mx-auto px-5 md:px-8">
+  <div class="relative max-w-3xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl min-h-[420px] md:min-h-[500px]">
+    <img src="/images/2026-au/32.jpg" alt="石窟角灯塔" class="absolute inset-0 w-full h-full object-cover"/>
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10 flex flex-col justify-end h-full min-h-[420px] md:min-h-[500px] p-5 sm:p-6 md:p-10 text-white">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          澳大利亚 · 悉尼
+        </span>
+        <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          2026.09.13 – 09.13
+        </span>
+        <span class="tag" style="background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.3)">1 天</span>
+      </div>
+      <h1 class="font-serif-cn text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3">
+        Circular Quay→Chowder Bay
+      </h1>
+      <p class="text-white/85 text-sm md:text-base max-w-2xl">
+        生命不息，徒步不止……
+      </p>
+      <div class="flex items-center gap-3 mt-4">
+        <div class="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-sm font-semibold">海</div>
+        <div class="text-sm">
+          <div class="font-medium">海不扬波</div>
+          <div class="text-white/60 text-xs">阅读约 5 分钟</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主体内容 -->
+<main class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 mt-10 md:mt-14 pb-16">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- 文章区 -->
+    <article class="prose-article max-w-none">
+
+      <!-- 导语 -->
+      <div class="flex items-start gap-5 mb-8 p-5 md:p-6 info-card">
+        <div class="compass shrink-0 hidden sm:flex">
+          <div class="compass-needle"></div>
+          <span class="absolute text-[9px] font-bold" style="top:4px;color:var(--terracotta)">N</span>
+          <span class="absolute text-[9px]" style="bottom:4px;color:var(--ink-soft)">S</span>
+        </div>
+        <div>
+          <div class="text-xs tracking-widest uppercase mb-1" style="color:var(--terracotta)">· Travel Diary ·</div>
+          <p class="text-base md:text-lg font-serif-cn !mb-0 !leading-relaxed" style="color:var(--ink-soft)">
+            Spit Bridge To Manly步道 ，长11公里，难度适中。
+          </p>
+        </div>
+      </div>
+
+      <h2 id="ch1">一、起点--Spit Bridge</h2>
+      <p class="drop-cap">从 Spit Bridge 开始往 Manly 的步道，这是比库吉到邦迪更野生、更幽静的徒步路线，沿途穿过海港国家公园，可以饱览悉尼内海湾风景。单向全程约 11公里，耗时约 3-4 小时，沿途有较多阶梯，难度中等。</p>
+
+      <p class="drop-cap">这座桥中间可以打开，定时开、合可以兼顾船舶和车辆通过。海湾内是游艇码头，停泊着很多大大小小的游艇、小渔船。</p>
+
+      <!-- 居中图片1 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/27.jpg" alt="港湾" data-caption="港湾"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">港湾</div>
+        </div>
+      </figure>
+      <!-- 居中图片2 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/28.jpg" alt="Spit Bridge" data-caption="Spit Bridge"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">Spit Bridge</div>
+        </div>
+      </figure>
+      <!-- 居中图片3 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/29.jpg" alt="港湾" data-caption="港湾"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">港湾</div>
+        </div>
+      </figure>
+
+      <div class="ornament">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.37 7.3L12 16.6 5.83 21.16l2.37-7.3L2 9.36h7.61z"/></svg>
+      </div>
+
+      <h2 id="ch2">二、Jungle Float和石窟角</h2>
+      <p>走过桑迪湾后，到达这个游泳和野餐的度假公园，设施齐全，很多人在此休闲娱乐。</p>
+
+      <!-- 居中图片4 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/30.jpg" alt="港湾" data-caption="港湾"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">港湾</div>
+        </div>
+      </figure>
+
+      <p>石窟角灯塔，一个建在突出海湾岬角上的白色灯塔。这段路不在主路上，来回要多走1公里，但值得一去。虽然塔身不能进入，但沿途景色很美。</p>
+
+      <!-- 两图并排 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-10">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/31.jpg" alt="石窟角" data-caption="石窟角"/>
+          <div class="zoom-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></div>
+          <div class="photo-caption">石窟角</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/32.jpg" alt="石窟角灯塔" data-caption="石窟角灯塔"/>
+          <div class="zoom-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></div>
+          <div class="photo-caption">石窟角灯塔</div>
+        </div>
+      </div>
+
+      <div class="ornament">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.37 7.3L12 16.6 5.83 21.16l2.37-7.3L2 9.36h7.61z"/></svg>
+      </div>
+
+      <h2 id="ch3">三、悬崖海岸</h2>
+      <p>悬崖海岸，这段路右侧靠近悬崖峭壁，景色不错。</p>
+
+      <!-- 居中图片7 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/33.jpg" alt="悬崖海岸" data-caption="悬崖海岸"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">悬崖海岸</div>
+        </div>
+      </figure>
+
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/34.jpg" alt="悬崖海岸" data-caption="悬崖海岸"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">悬崖海岸</div>
+        </div>
+      </figure>
+
+      <div class="ornament">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.37 7.3L12 16.6 5.83 21.16l2.37-7.3L2 9.36h7.61z"/></svg>
+      </div>
+
+      <h2 id="ch4">四、Reef Beach</h2>
+      <p>穿过一片茂密的林间道后，到达北港保护区（North Harbour Reserve）和礁石海滩（Reef Beach），这里是休息和游泳的好地方。</p>
+
+      <!-- 居中图片8 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/35.jpg" alt="Taylors Bay" data-caption="Taylors Bay"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">Taylors Bay</div>
+        </div>
+      </figure>
+
+      <h2 id="ch5">五、Manly</h2>
+      <p>到达Manly，从曼利码头直接坐轮渡（Manly Ferry）到市区环形码头（Circular Quay），再坐T8火车返回。</p>
+
+      <!-- 居中图片10 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/36.jpg" alt="Manly" data-caption="Manly"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">Manly</div>
+        </div>
+      </figure>
+
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/37.jpg" alt="海港大桥" data-caption="海港大桥"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">海港大桥</div>
+        </div>
+      </figure>
+
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/38.jpg" alt="悉尼歌剧院" data-caption="悉尼歌剧院"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">悉尼歌剧院</div>
+        </div>
+      </figure>
+
+      <blockquote>
+        旅行的意义从来不是走了多远，而是在某一刻，你忽然重新找回了自己。
+      </blockquote>
+
+      <!-- 路线轨迹图 -->
+      <figure class="my-10 max-w-[680px] mx-auto">
+        <div class="photo-card" onclick="openLightbox(this)">
+          <img src="/images/2026-au/29.jpg" alt="轨迹图" data-caption="轨迹图"/>
+          <div class="zoom-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+          </div>
+          <div class="photo-caption">轨迹图</div>
+        </div>
+      </figure>
+
+      <!-- 标签区 -->
+      <div class="flex flex-wrap gap-2 mt-10 pt-6 border-t" style="border-color:rgba(43,36,32,0.08)">
+        <span class="tag">#澳大利亚</span>
+        <span class="tag">#悉尼</span>
+        <span class="tag">#Spit Bridge</span>
+        <span class="tag">#Manly</span>
+        <span class="tag">#旅行日记</span>
+        <span class="tag">#慢生活</span>
+      </div>
+
+      <!-- 路线地图 -->
+      <div class="info-card p-5 md:p-6 mt-10">
+        <div class="flex items-center gap-2 mb-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a8c" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg>
+          <h3 class="!m-0" style="color:var(--ink)">地点示意图</h3>
+        </div>
+        <div id="travel-map"></div>
+        <p class="text-xs mt-2 !mb-0" style="color:var(--ink-soft)">Spit Bridge → 石窟角 → 悬崖海岸→ Reef Beach→Manly · 约 11 公里</p>
+      </div>
+
+      <!-- 底部返回目录 -->
+      <div class="flex flex-col items-center justify-center mt-16 pt-10" id="dir">
+        <div class="ornament w-full max-w-xs !my-0 mb-6">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.2 4.5 2.37 7.3L12 16.6 5.83 21.16l2.37-7.3L2 9.36h7.61z"/></svg>
+        </div>
+        <p class="font-serif-cn text-lg mb-5" style="color:var(--ink-soft)">--感谢你耐心陪我走过这段路-- </p>
+        <a href="#top" class="back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12l6-6M3 12l6 6"/></svg>
+          返回顶部
+        </a>
+        <a href="/html/essay1.html" class="mt-4 text-sm transition hover:underline" style="color:var(--ink-soft)">← 回到游记目录</a>
+      </div>
+
+    </article>
+
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event,true)" aria-label="关闭">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+  // Lightbox
+  function openLightbox(el){
+    const img = el.querySelector('img');
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-caption').textContent = img.dataset.caption || '';
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e,force){
+    if(force || e.target.id==='lightbox' || e.target.classList.contains('lightbox-close')){
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow='';
+    }
+  }
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(null,true); });
+
+  // 地图（Leaflet）
+  window.addEventListener('load',()=>{
+    const map = L.map('travel-map',{zoomControl:true,scrollWheelZoom:false}).setView([-33.70,151.00],9);
+    L.tileLayer('http://g1.shipxy.com/tile.g?m=1&x={x}&y={y}&z={z}',{
+      attribution:'© shipxy',maxZoom:16
+    }).addTo(map);
+    const points = [
+      {name:'Spit Bridge',lat:-33.8019,lng:151.2463},
+      {name:'石窟角f',lat:-33.8176,lng:151.2617},
+      {name:'悬崖海岸',lat:-33.8105,lng:151.2733},
+      {name:'Reef Beach',lat:-33.8037,lng:151.2701},
+      {name:'Manly',lat:-33.8001,lng:151.2838}
+    ];
+    const latlngs = points.map(p=>{
+      L.circleMarker([p.lat,p.lng],{radius:7,fillColor:'#c86b3c',color:'#fff',weight:2,fillOpacity:1})
+        .addTo(map).bindPopup(p.name);
+      return [p.lat,p.lng];
+    });
+    L.polyline(latlngs,{color:'#c86b3c',weight:3,opacity:0.7,dashArray:'6,6'}).addTo(map);
+  });
+</script>
+</body>
+</html>
