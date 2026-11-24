@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>澳洲-3 · 2026澳大利亚</title>
-    <!-- 优雅简洁的风格，突出照片与可编辑说明 -->
     <style>
         * {
             box-sizing: border-box;
@@ -24,13 +23,11 @@
             color: #2e2e2e;
         }
 
-        /* 主容器 */
         .portfolio {
             max-width: 1440px;
             width: 100%;
         }
 
-        /* 标题区 */
         .page-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -57,14 +54,12 @@
             font-weight: 300;
         }
 
-        /* 图片网格 */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem 1.8rem;
         }
 
-        /* 照片卡片 */
         .photo-card {
             background: #fff;
             border-radius: 16px;
@@ -81,12 +76,11 @@
             box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* 图片链接容器 —— 保证点击图片跳转原图 */
         .photo-link {
             display: block;
             line-height: 0;
             background-color: #eae5dd;
-            aspect-ratio: 4 / 3;  /* 统一比例，美观 */
+            aspect-ratio: 4 / 3;
             overflow: hidden;
         }
 
@@ -103,16 +97,16 @@
             transform: scale(1.01);
         }
 
-        /* 可编辑文字说明区域 */
         .caption-area {
             padding: 1rem 1.2rem 1.2rem;
             background: #fff;
             flex: 1 0 auto;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.35rem;
         }
 
-        /* 可编辑元素：contenteditable + 合理的样式 */
         .editable-caption {
             width: 100%;
             font-size: 1rem;
@@ -139,22 +133,22 @@
             border-style: solid;
         }
 
-        /* 提示用户可编辑的小提示 */
         .caption-hint {
-            font-size: 0.7rem;
-            color: #a89f96;
-            letter-spacing: 0.4px;
-            margin-top: 0.3rem;
+            font-size: 0.65rem;
+            color: #b1a69b;
+            letter-spacing: 0.3px;
+            margin-top: 0.1rem;
             text-align: right;
-            opacity: 0.7;
+            opacity: 0.6;
             transition: opacity 0.2s;
+            align-self: flex-end;
+            user-select: none;
         }
 
         .photo-card:hover .caption-hint {
-            opacity: 1;
+            opacity: 0.9;
         }
 
-        /* 页尾返回链接 */
         .page-footer {
             margin-top: 3.5rem;
             text-align: center;
@@ -184,7 +178,22 @@
             border-color: #b7a99a;
         }
 
-        /* 当图片较多时保持网格适应 */
+        /* 图片加载失败时显示路径的小提示，方便排查 */
+        .img-error-tip {
+            font-size: 0.65rem;
+            color: #a08e7c;
+            background: #f2ede7;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            margin-top: 0.2rem;
+            word-break: break-all;
+            display: none;
+        }
+
+        .photo-card.has-error .img-error-tip {
+            display: block;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 1.5rem 1rem 3rem;
@@ -199,26 +208,17 @@
                 padding: 0.8rem 1rem 1rem;
             }
         }
-
-        /* 手动增加一组图片，实际使用时只需按图片数量生成卡片 */
-        /* 这里动态生成63个卡片 (01.jpg 到 63.jpg) 同时支持后续扩展 */
     </style>
 </head>
 <body>
     <div class="portfolio">
-        <!-- 页眉：标题 -->
         <header class="page-header">
             <h1>2026澳大利亚</h1>
             <div class="sub-title">澳洲-3</div>
         </header>
 
-        <!-- 照片网格容器 -->
-        <div class="photo-grid" id="photoGrid">
-            <!-- 动态通过 JavaScript 生成 63 张图片卡片，并使用 contenteditable 说明 -->
-            <!-- 使用 /images/2026-au-2/01.jpg ~ 63.jpg (根据常规图集，暂定为63张，可自调) -->
-        </div>
+        <div class="photo-grid" id="photoGrid"></div>
 
-        <!-- 页尾返回相册集 -->
         <footer class="page-footer">
             <a href="/html/portfolio" class="back-link">← 点击返回相册集</a>
         </footer>
@@ -226,16 +226,12 @@
 
     <script>
         (function() {
-            // 配置图片数量 (可根据实际图片数量调整, 目前支持01-63, 你可以修改这个数字)
-            const IMAGE_COUNT = 63;  // 从01到63, 若图片更多只需调整此处并确保文件名连续
-
-            // 图片基础路径
+            const IMAGE_COUNT = 63;
+            // 保持你原有的图片文件夹路径：2026-au-2
             const BASE_PATH = '/images/2026-au-2/';
 
-            // 获取网格容器
             const grid = document.getElementById('photoGrid');
 
-            // 默认文字说明 (给每张图一个默认描述，也可自行修改内容，用户可编辑)
             const DEFAULT_CAPTIONS = [
                 '2026-08-28 库吉海滩',
                 '2026-08-28 库吉海滩→邦迪海滩徒步',
@@ -283,7 +279,7 @@
                 '2026-10-18 傍晚.悉尼歌剧院',
                 '2026-10-22 Milson Park 蓝花楹',
                 '2026-10-22 Milson Park',
-                '2026-10-22 Wendy Whiteley's Secret Garden',
+                '2026-10-22 Wendy Whiteley\'s Secret Garden',
                 '2026-10-22 Lavender Bay',
                 '2026-10-22 Lavender Bay',
                 '2026-10-22 Circular Quay',
@@ -302,137 +298,83 @@
                 '2026-11-7 Kyeemagh Rock Jetty'
             ];
 
-            // 循环构建所有卡片
             for (let i = 1; i <= IMAGE_COUNT; i++) {
-                // 生成文件名: 两位数，不足补0
                 const num = i.toString().padStart(2, '0');
                 const imagePath = `${BASE_PATH}${num}.jpg`;
 
-                // 获取默认说明 (如果索引超出默认数组范围，则使用“澳大利亚 · 记忆”)
+                // 控制台输出每张图的完整 URL，方便在 F12 中核对
+                console.log(`[图片 ${num}] ${window.location.origin}${imagePath}`);
+
                 const defaultCaption = i <= DEFAULT_CAPTIONS.length 
                     ? DEFAULT_CAPTIONS[i - 1] 
                     : '澳大利亚 · 记忆';
 
-                // 创建卡片元素
                 const card = document.createElement('div');
                 card.className = 'photo-card';
 
-                // 创建图片链接 (点击图片跳转至原图)
                 const photoLink = document.createElement('a');
                 photoLink.className = 'photo-link';
-                photoLink.href = imagePath;      // 原图地址
-                photoLink.target = '_blank';      // 在新标签页打开原图，方便查看大图
+                photoLink.href = imagePath;
+                photoLink.target = '_blank';
                 photoLink.rel = 'noopener noreferrer';
 
-                // 图片元素
                 const img = document.createElement('img');
                 img.src = imagePath;
                 img.alt = `澳大利亚风景 ${num}`;
-                img.loading = 'lazy';            // 懒加载
-                // 图片加载失败时显示占位背景，但不影响布局
+                img.loading = 'lazy';
+
+                // 加载失败时：显示占位图 + 在卡片底部显示实际请求路径
                 img.onerror = function() {
                     this.style.backgroundColor = '#e5dfd8';
-                    this.alt = '图片加载中';
-                    this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23eae5dd\'/%3E%3Ctext x=\'200\' y=\'150\' font-family=\'Arial\' font-size=\'20\' fill=\'%239a8e80\' text-anchor=\'middle\'%3E📷 照片%3C/text%3E%3C/svg%3E';
+                    this.alt = '图片加载失败';
+                    this.src = 'data:image/svg+xml,' + encodeURIComponent(
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">' +
+                        '<rect width="400" height="300" fill="#eae5dd"/>' +
+                        '<text x="200" y="140" font-family="Arial" font-size="20" fill="#9a8e80" text-anchor="middle">📷 图片未找到</text>' +
+                        '<text x="200" y="180" font-family="Arial" font-size="12" fill="#a89f96" text-anchor="middle">请检查文件是否存在</text>' +
+                        '</svg>'
+                    );
+                    // 给卡片加错误标记
+                    card.classList.add('has-error');
+                    // 更新错误提示中的路径
+                    const tip = card.querySelector('.img-error-tip');
+                    if (tip) {
+                        tip.textContent = '请求路径: ' + imagePath;
+                    }
                 };
 
                 photoLink.appendChild(img);
 
-                // 创建说明文字区域容器
                 const captionArea = document.createElement('div');
                 captionArea.className = 'caption-area';
 
-                // 可编辑说明文字
                 const editableCaption = document.createElement('div');
                 editableCaption.className = 'editable-caption';
-                editableCaption.contentEditable = 'true';   // 可编辑
-                editableCaption.textContent = defaultCaption;  // 默认文字
+                editableCaption.contentEditable = 'true';
+                editableCaption.textContent = defaultCaption;
                 editableCaption.setAttribute('spellcheck', 'false');
                 editableCaption.setAttribute('role', 'textbox');
                 editableCaption.setAttribute('aria-label', '可编辑图片说明');
 
-                // 可选的额外小提示 (由伪元素或单独span显示“可编辑”)
-                // 但不占用额外空间，我们用::after或者一个小提示图标。在这里直接添加一个微小的提示文字
-                // 但为了保持美观，通过CSS给一个淡灰色小提示放在后面，用flex布局不方便，所以改成在caption-area里加一个提示元素
-                // 为了不影响可编辑区域，把它放在可编辑下面不太合适——用户可能希望直接编辑。
-                // 因此我们采用一个极小提示放在卡片内底部，或者不显示，只要contenteditable自带虚线边框用户就知道可编辑。
-                // 为了优雅，我们可以省略提示文字。但为了清晰，在可编辑区域外追加一个小icon(不影响编辑)或忽略。
-                // 还是增加一个提示元素，但用小字放在可编辑下方，同时保留干净的风格。
-                // 但为了避免干扰，干脆加在卡片底部一点点
+                // 图片加载失败时显示路径的提示元素（默认隐藏）
+                const errorTip = document.createElement('div');
+                errorTip.className = 'img-error-tip';
+                errorTip.textContent = '';
 
-                // 为了更好的用户体验，可以在可编辑区域下方加一个极淡的提示“✎ 可编辑”，但这会占据额外高度。
-                // 这次我们使用一个放在卡片下方的微小提示，通过flex列布局，但会撑高卡片。可以选择不加。
-                // 根据需求，只要可编辑即可，不需要提示文字。所以这里仅追加可编辑区域。
-                // 但为了“每张图片底部附带可自定义编辑图片文字说明”清晰，我决定在可编辑框内添加一个非常淡的placeholder
-                // 但是contenteditable没有placeholder，也可以加一个伪类。但干净为主，保持简洁可编辑框。
-
-                captionArea.appendChild(editableCaption);
-                // 添加一句极小的提示，放在caption-area内，利用flex-direction: column，但这样可编辑区域和提示垂直排列。
-                // 如果放在caption-area内用flex-direction: column可能会影响可编辑宽度，但没问题。
-                // 更改caption-area样式为flex column? 目前是flex，但是align-items: flex-start，且可编辑宽度100%。
-                // 如果增加提示元素，它会出现在可编辑下方。这样也可以。但为了不破坏设计，我们改为在可编辑框内部通过伪元素提示？不好。
-                // 最终还是添加一条简单的提示文字，小而淡雅，放在可编辑框下面（通过绝对定位或正常流）。
-                // 修改caption-area为flex-direction: column; 但需要微调。或者不添加提示，直接让用户发现可编辑（虚线框表明）。
-                // 实际上虚线边框是足够的。但我还是增加一个非常细微的提示图标/文字，让用户知道可编辑。
-                // 为了美观，加在可编辑文字右上角？还是算了。下面实现一个简单的“✎ 可编辑”小标签，放在可编辑框下方右对齐。
-
-                // 但可能会让用户觉得多余。但考虑功能明确，我决定加上极淡的提示，通过CSS伪元素或者额外span。
-                // 使用 ::after 在可编辑框上显示一个很小的铅笔符号？不, 直接加一个span。
-                // 我们在这里加一个span。
                 const hintSpan = document.createElement('span');
                 hintSpan.className = 'caption-hint';
                 hintSpan.textContent = '✎ 点击编辑说明';
-                // 由于caption-area是flex，我们调整它为flex-direction: column，使可编辑框和提示上下排列。
-                // 但提示会占额外高度，但是可接受。或者我们可以把提示放在可编辑框内部右上角？不行。
-                // 已经加好了，修改caption-area样式为 column 并加 gap。
-                // 这里在style中补充：.caption-area { flex-direction: column; } 稍后添加。
-                // 现在修改：我们调整caption-area样式为flex-direction: column; 并保留gap: 0.25rem。
-                // 立即在style中打补丁。
+
+                captionArea.appendChild(editableCaption);
+                captionArea.appendChild(errorTip);
                 captionArea.appendChild(hintSpan);
 
-                // 组装卡片
                 card.appendChild(photoLink);
                 card.appendChild(captionArea);
 
-                // 放入网格
                 grid.appendChild(card);
             }
-
-            // 微调样式补充 (通过动态方式添加以覆盖原有)，主要是.caption-area为column
-            // 因为前面没有设置flex-direction，默认为row, 现在我们改成column以适应hintSpan
-            // 最好直接写在style里，但也可以通过JS动态加style。为了简洁，我直接使用style标签覆盖。
-            const styleFix = document.createElement('style');
-            styleFix.textContent = `
-                .caption-area {
-                    flex-direction: column;
-                    align-items: stretch;
-                    gap: 0.35rem;
-                }
-                .editable-caption {
-                    width: 100%;
-                }
-                .caption-hint {
-                    font-size: 0.65rem;
-                    color: #b1a69b;
-                    letter-spacing: 0.3px;
-                    margin-top: 0.1rem;
-                    text-align: right;
-                    opacity: 0.6;
-                    transition: opacity 0.2s;
-                    align-self: flex-end;
-                    user-select: none;
-                }
-                .photo-card:hover .caption-hint {
-                    opacity: 0.9;
-                }
-            `;
-            document.head.appendChild(styleFix);
         })();
     </script>
-    <!-- 确保在缺少某些图片时有优雅的回退，同时也保证了可编辑功能。
-         注意：原图链接指向 /images/2026-au-2/01.jpg 等，点击图片即可打开原图。 
-         说明文字使用 contenteditable 实现可编辑，每个卡片的说明独立。
-    -->
-    <!-- 添加一个极小的辅助说明（不必须），但已经内置在卡片提示中 -->
 </body>
 </html>
